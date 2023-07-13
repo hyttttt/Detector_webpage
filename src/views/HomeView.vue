@@ -1,9 +1,11 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import Navbar from '../components/Navbar.vue'
+import LogInButton from '../components/buttons/LogInButton.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <Navbar>
+    <template v-slot:log-btn><LogInButton /></template>
+  </Navbar>
+  <h1>This is home page</h1>
 </template>

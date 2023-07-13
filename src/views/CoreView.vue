@@ -1,8 +1,15 @@
 <script setup>
 import { ref, computed } from 'vue'
+import Navbar from '../components/Navbar.vue'
+import TestButton from '../components/buttons/TestButton.vue'
+import UpdateButton from '../components/buttons/UpdateButton.vue'
+import DeleteButton_d from '../components/buttons/DeleteButton_d.vue'
+import DeleteButton_r from '../components/buttons/DeleteButton_r.vue'
+import LogOutButton from '../components/buttons/LogOutButton.vue'
+import Addbutton from '../components/buttons/Addbutton.vue'
 
 //const newDetector = ref('')
-var id = 0
+var uid = ref(123456789)
 
 const detectors = ref([{ id: Math.random() }, { id: Math.random() }, { id: Math.random() }])
 const reports = ref([{ id: 0, sno: 0 }])
@@ -12,71 +19,32 @@ function addDetector() {
   //newDetector.value = ''
 }
 
-function removeDetector(d) {
-  detectors.value = detectors.value.filter((i) => i !== d)
-}
-
 function addReport(d) {
   reports.value.push({ id: Math.random(), sno: d.id })
-}
-
-function removeReport(r) {
-  reports.value = reports.value.filter((i) => i !== r)
 }
 </script>
 
 <template>
-  <div id="content-wrap">
-    <div class="row" id="content-top">
-      <div class="dropdown">
-        <a
-          class="btn dropdown-toggle"
-          href="#"
-          role="button"
-          data-toggle="dropdown"
-          aria-expanded="false"
-          style="background-color: #819ae6; font-family: 'Noto Sans'; color: white"
-        >
-          Select functions
-        </a>
+  <Navbar>
+    <template v-slot:log-btn><LogOutButton /></template>
+  </Navbar>
 
-        <div class="dropdown-menu">
-          <ul class="list-group">
-            <li class="dropdown-item">
-              <input class="form-check-input me-1" type="checkbox" value="" id="Checkbox1" />
-              <label class="form-check-label" for="Checkbox1">Normal Samples</label>
-            </li>
-            <div class="dropdown-divider"></div>
-            <li class="dropdown-item">
-              <input class="form-check-input me-1" type="checkbox" value="" id="Checkbox2" />
-              <label class="form-check-label" for="Checkbox2">Sequence-based AEs</label>
-            </li>
-            <div class="dropdown-divider"></div>
-            <li class="dropdown-item">
-              <input class="form-check-input me-1" type="checkbox" value="" id="Checkbox3" />
-              <label class="form-check-label" for="Checkbox3">Structure-based AEs</label>
-            </li>
-            <div class="dropdown-divider"></div>
-            <li class="dropdown-item">
-              <input class="form-check-input me-1" type="checkbox" value="" id="Checkbox4" />
-              <label class="form-check-label" for="Checkbox4">Cross-arch Samples</label>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <div id="content-wrap">
+    <div class="row" id="content-top"></div>
     <div class="row" id="content-bottom">
       <div class="col">
         <ul class="list-group" id="d-list">
           <li class="list-group-item" id="d-list-title">
             Detector List
-            <button type="button" class="btn btn-light" @click="addDetector">Add</button>
+            <Addbutton />
           </li>
           <li v-for="d in detectors" :key="d.id" class="list-group-item">
-            <a>{{ d.id }}</a>
-            <button type="button" class="btn btn-primary" @click="addReport(d)">Test</button>
-            <button type="button" class="btn btn-warning">Update</button>
-            <button type="button" class="btn btn-danger" @click="removeDetector(d)">Delete</button>
+            <div class="row">
+              <a>{{ d.id }}</a>
+              <TestButton :uid="uid" :did="d.id" />
+              <UpdateButton :uid="uid" :did="d.id" />
+              <DeleteButton_d :uid="uid" :did="d.id" />
+            </div>
           </li>
         </ul>
       </div>
@@ -84,8 +52,10 @@ function removeReport(r) {
         <ul class="list-group" id="r-list">
           <li class="list-group-item" id="r-list-title">Report List</li>
           <li v-for="r in reports" :key="r.id" class="list-group-item">
-            <a>Report {{ r.sno }}</a>
-            <button type="button" class="btn btn-danger" @click="removeReport(r)">Delete</button>
+            <div class="row">
+              <a>Report {{ r.sno }}</a>
+              <DeleteButton_r :uid="uid" :rid="r.id" />
+            </div>
           </li>
         </ul>
       </div>

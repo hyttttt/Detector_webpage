@@ -5,7 +5,7 @@
         <a class="navbar-brand" style="color: aliceblue" href="#"
           ><img
             src="../assets/glasses.svg"
-            alt="Bootstrap"
+            alt="testIcon"
             width="25"
             height="25"
             style="margin: 0 10px 0 5px"
@@ -27,14 +27,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" style="color: aliceblue" href="#">Home</a>
+              <a class="nav-link" style="color: aliceblue" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="color: aliceblue" href="#">About</a>
+              <a class="nav-link" style="color: aliceblue" href="/about">About</a>
             </li>
           </ul>
-
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Log out</button>
+          <slot name="log-btn"></slot>
         </div>
       </nav>
     </div>
