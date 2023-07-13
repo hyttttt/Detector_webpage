@@ -10,7 +10,7 @@
             height="25"
             style="margin: 0 10px 0 5px"
           />
-          Detector tester</a
+          Detector Tester</a
         >
         <button
           class="navbar-toggler"

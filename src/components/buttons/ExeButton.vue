@@ -3,17 +3,18 @@ import { useRouter } from 'vue-router'
 
 const props = defineProps({
   uid: String,
-  did: Number
+  did: Number,
+  func: Object
 })
 
 const router = useRouter()
-function testPage() {
-  router.push(`/task/${props.uid}/${props.did}`)
+function execute() {
+  router.push(`/report`)
 }
 </script>
 
 <template>
   <div>
-    <button type="button" class="btn btn-primary" @click="testPage">Test</button>
+    <button type="button" class="btn btn-danger" @click="execute">Go</button>
   </div>
 </template>

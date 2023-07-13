@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-  uid: Number,
+  uid: String,
   did: Number
 })
 </script>
