@@ -10,7 +10,7 @@
             height="25"
             style="margin: 0 10px 0 5px"
           />
-          Test Nav Bar</a
+          Detector tester</a
         >
         <button
           class="navbar-toggler"
