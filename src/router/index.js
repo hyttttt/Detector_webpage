@@ -4,6 +4,8 @@ import TaskView from '../views/TaskView.vue'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import ReportView from '../views/ReportView.vue'
+import SignInView from '../views/SignInView.vue'
+import SignUpView from '../views/SignUpView.vue'
 
 import TestPage from '../views/TestPage.vue'
 
@@ -13,7 +15,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      redirect: '/signIn'
+    },
+    {
+      path: '/signIn',
+      name: 'signIn',
+      component: SignInView
+    },
+    {
+      path: '/signUp',
+      name: 'signUp',
+      component: SignUpView
     },
     {
       path: '/about',
