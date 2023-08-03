@@ -1,11 +1,9 @@
 <script setup>
-import Navbar from '../components/Navbar.vue'
-import LogOutButton from '../components/buttons/LogOutButton.vue'
+import BasePage from '../components/BasePage.vue'
 </script>
-
 <template>
-  <Navbar>
-    <template v-slot:log-btn><LogOutButton /></template>
-  </Navbar>
-  <h1>This is report page</h1>
+  <BasePage>
+    <template v-slot:title>Report</template>
+    <template v-slot:content></template>
+  </BasePage>
 </template>

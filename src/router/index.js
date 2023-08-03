@@ -35,7 +35,7 @@ const router = createRouter({
     {
       path: '/core',
       name: 'core',
-      component: CoreView
+      component: ReportView
     },
     {
       path: '/task/:uid/:did', //user id, detector id

@@ -1,16 +1,7 @@
 <template>
   <div class="container-fluid" id="navbar-top">
     <nav class="navbar navbar-expand-lg">
-      <a class="navbar-brand" style="color: aliceblue" href="#"
-        ><img
-          src="../assets/glasses.svg"
-          alt="testIcon"
-          width="25"
-          height="25"
-          style="margin: 0 10px 0 5px"
-        />
-        Detector Tester</a
-      >
+      <a class="navbar-brand" style="color: aliceblue" href="#"><slot name="title"></slot></a>
       <button
         class="navbar-toggler"
         type="button"
@@ -24,14 +15,13 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" style="color: aliceblue" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color: aliceblue" href="/about">About</a>
-          </li>
-        </ul>
+        <ul class="navbar-nav mr-auto"></ul>
+        <a href="/"><img src="../assets/user.png" class="icons" /></a>
+        <a>&nbsp;&nbsp;</a>
+        <a href="/"><img src="../assets/settings.png" class="icons" /></a>
+        <a>&nbsp;&nbsp;</a>
+        <a href="/"><img src="../assets/bell.png" class="icons" /></a>
+        <a>&nbsp;&nbsp;&nbsp;</a>
         <slot name="log-btn"></slot>
       </div>
     </nav>
@@ -43,7 +33,12 @@
   font-family: 'Noto Sans';
   font-weight: bold;
   color: aliceblue;
-  background-color: #819ae6;
-  width: 100vw;
+  background-color: #4287f5;
+}
+
+.icons {
+  width: 24px;
+  padding: 10%;
+  margin: 10%;
 }
 </style>

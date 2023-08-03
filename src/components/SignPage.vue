@@ -25,7 +25,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 #bg {
   height: 60vh;
   margin: 1%;
