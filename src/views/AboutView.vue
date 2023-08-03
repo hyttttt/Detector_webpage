@@ -1,11 +1,9 @@
 <script setup>
-import Navbar from '../components/Navbar.vue'
-import LogInButton from '../components/buttons/LogInButton.vue'
+import BasePage from '../components/BasePage.vue'
 </script>
-
 <template>
-  <Navbar>
-    <template v-slot:log-btn><LogInButton /></template>
-  </Navbar>
-  <h1>This is about page</h1>
+  <BasePage>
+    <template v-slot:title>About</template>
+    <template v-slot:content>This is about page</template>
+  </BasePage>
 </template>
