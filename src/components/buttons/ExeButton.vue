@@ -15,6 +15,6 @@ function execute() {
 
 <template>
   <div>
-    <button type="button" class="btn btn-danger" @click="execute">Go</button>
+    <button type="button" class="btn btn-primary" @click="execute">Execute</button>
   </div>
 </template>

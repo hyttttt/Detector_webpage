@@ -1,3 +1,5 @@
+<!-- This is a testing page as a playgorund -->
+
 <script setup>
 import BasePage from '../components/BasePage.vue'
 </script>
