@@ -1,7 +1,10 @@
 <script setup>
 import Navbar from './Navbar.vue'
-import LogOutButton from './buttons/LogOutButton.vue'
 import SideBar from './SideBar.vue'
+
+const props = defineProps({
+  isLogIn: Boolean
+})
 </script>
 
 <template>
@@ -11,9 +14,8 @@ import SideBar from './SideBar.vue'
         <SideBar />
       </div>
       <div class="col" id="content-area">
-        <Navbar>
+        <Navbar :isLogIn="isLogIn">
           <template v-slot:title><slot name="title"></slot></template>
-          <template v-slot:log-btn><LogOutButton /></template>
         </Navbar>
         <slot name="content"></slot>
       </div>

@@ -5,6 +5,7 @@
       <p>Testing time: <slot name="test-time"></slot></p>
       <p>Testing Sample Number: <slot name="test-sample-num"></slot></p>
       <p>Total Sample Number: <slot name="total-sample-num"></slot></p>
+      <!-- report title start -->
       <div class="row text-center">
         <div class="col">
           <strong>Accuracy</strong>
@@ -25,6 +26,9 @@
           <strong>F1 score</strong>
         </div>
       </div>
+      <!-- report title end -->
+
+      <!-- report value start -->
       <div class="row text-center">
         <div class="col">
           <p><slot name="acc"></slot></p>
@@ -45,13 +49,8 @@
           <p><slot name="f1"></slot></p>
         </div>
       </div>
+      <!-- report value end -->
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
 </template>
-
-<style scoped>
-.report-card {
-  /*font-family: 'Noto Sans';*/
-}
-</style>

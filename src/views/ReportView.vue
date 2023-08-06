@@ -1,10 +1,13 @@
 <script setup>
 import BasePage from '../components/BasePage.vue'
 import ReportCard from '../components/ReportCard.vue'
+import { ref } from 'vue'
+
+const isLogIn = ref(true)
 </script>
 
 <template>
-  <BasePage>
+  <BasePage :isLogIn="isLogIn">
     <template v-slot:title>Report</template>
     <template v-slot:content>
       <div class="row row-cols-1 row-cols-md-1">

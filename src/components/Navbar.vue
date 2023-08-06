@@ -1,3 +1,12 @@
+<script setup>
+import LogOutButton from './buttons/LogOutButton.vue'
+import LogInButton from './buttons/LogInButton.vue'
+
+const props = defineProps({
+  isLogIn: Boolean
+})
+</script>
+
 <template>
   <div class="container-fluid" id="navbar-top">
     <nav class="navbar navbar-expand-lg">
@@ -22,7 +31,9 @@
         <a>&nbsp;&nbsp;</a>
         <a href="/"><img src="../assets/bell.png" class="icons" /></a>
         <a>&nbsp;&nbsp;&nbsp;</a>
-        <slot name="log-btn"></slot>
+
+        <p v-if="isLogIn"><LogOutButton /></p>
+        <p v-else><LogInButton /></p>
       </div>
     </nav>
   </div>
