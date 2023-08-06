@@ -14,6 +14,6 @@ const props = defineProps({
     {{ num }}
   </div>
   <div class="text-center">
-    <DoughnutChart :angle="props.num * 360" />
+    <DoughnutChart :percent="num" />
   </div>
 </template>

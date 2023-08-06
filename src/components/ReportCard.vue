@@ -15,7 +15,6 @@ const props = defineProps({
   <div class="card report-card">
     <h5 class="card-header"><slot name="title"></slot></h5>
     <div class="card-body">
-      <p>Testing time: <slot name="test-time"></slot></p>
       <p>Testing Sample Number: <slot name="test-sample-num"></slot></p>
       <p>Total Sample Number: <slot name="total-sample-num"></slot></p>
 
@@ -54,7 +53,15 @@ const props = defineProps({
       </div>
       <!-- charts end -->
 
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <!-- testing time start -->
+      <p>
+        <strong><br />Testing time:</strong>
+      </p>
+      <p>Max: <slot name="test-time-max"></slot> ms</p>
+      <p>Min: <slot name="test-time-min"></slot> ms</p>
+      <p>Average: <slot name="test-time-avg"></slot> ms</p>
+      <p>Total: <slot name="test-time-total"></slot> ms</p>
+      <!-- testing time end -->
     </div>
   </div>
 </template>

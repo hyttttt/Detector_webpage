@@ -25,12 +25,12 @@ export default {
     }
   },
   props: {
-    angle: Number
+    percent: Number
   },
   computed: {
     strokeDasharray() {
       const circumference = 2 * Math.PI * this.radius
-      const progress = (this.angle / 360) * circumference
+      const progress = this.percent * circumference
       return `${progress} ${circumference}`
     },
     strokeDashoffset() {

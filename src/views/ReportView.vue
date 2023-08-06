@@ -21,9 +21,12 @@ const f1 = ref(0.01)
         <div class="col mb-4">
           <ReportCard :acc="acc" :fp="fp" :fn="fn" :precision="precision" :recall="recall" :f1="f1">
             <template v-slot:title>Normal Samples</template>
-            <template v-slot:test-time>123456 ms</template>
             <template v-slot:test-sample-num>123456</template>
             <template v-slot:total-sample-num>789123</template>
+            <template v-slot:test-time-max>123456</template>
+            <template v-slot:test-time-min>789</template>
+            <template v-slot:test-time-avg>542165</template>
+            <template v-slot:test-time-total>785613</template>
           </ReportCard>
         </div>
         <div class="col mb-4">

@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DashboardView from '../views/DashboardView.vue'
 import TaskView from '../views/TaskView.vue'
-import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import ReportView from '../views/ReportView.vue'
 import SignInView from '../views/SignInView.vue'
