@@ -1,3 +1,16 @@
+<script setup>
+import ReportDoughnut from './ReportDoughnut.vue'
+
+const props = defineProps({
+  acc: Number,
+  fp: Number,
+  fn: Number,
+  precision: Number,
+  recall: Number,
+  f1: Number
+})
+</script>
+
 <template>
   <div class="card report-card">
     <h5 class="card-header"><slot name="title"></slot></h5>
@@ -5,51 +18,42 @@
       <p>Testing time: <slot name="test-time"></slot></p>
       <p>Testing Sample Number: <slot name="test-sample-num"></slot></p>
       <p>Total Sample Number: <slot name="total-sample-num"></slot></p>
-      <!-- report title start -->
-      <div class="row text-center">
-        <div class="col">
-          <strong>Accuracy</strong>
-        </div>
-        <div class="col">
-          <strong>False positive</strong>
-        </div>
-        <div class="col">
-          <strong>False negative</strong>
-        </div>
-        <div class="col">
-          <strong>Precision</strong>
-        </div>
-        <div class="col">
-          <strong>Recall</strong>
-        </div>
-        <div class="col">
-          <strong>F1 score</strong>
-        </div>
-      </div>
-      <!-- report title end -->
 
-      <!-- report value start -->
-      <div class="row text-center">
+      <!-- charts start -->
+      <div class="row">
         <div class="col">
-          <p><slot name="acc"></slot></p>
+          <ReportDoughnut :num="acc">
+            <template v-slot:title>Accuracy</template>
+          </ReportDoughnut>
         </div>
         <div class="col">
-          <p><slot name="fp"></slot></p>
+          <ReportDoughnut :num="fp">
+            <template v-slot:title>False positive</template>
+          </ReportDoughnut>
         </div>
         <div class="col">
-          <p><slot name="fn"></slot></p>
+          <ReportDoughnut :num="fn">
+            <template v-slot:title>False negative</template>
+          </ReportDoughnut>
         </div>
         <div class="col">
-          <p><slot name="precision"></slot></p>
+          <ReportDoughnut :num="precision">
+            <template v-slot:title>Precision</template>
+          </ReportDoughnut>
         </div>
         <div class="col">
-          <p><slot name="recall"></slot></p>
+          <ReportDoughnut :num="recall">
+            <template v-slot:title>Recall</template>
+          </ReportDoughnut>
         </div>
         <div class="col">
-          <p><slot name="f1"></slot></p>
+          <ReportDoughnut :num="f1">
+            <template v-slot:title>F1 score</template>
+          </ReportDoughnut>
         </div>
       </div>
-      <!-- report value end -->
+      <!-- charts end -->
+
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>

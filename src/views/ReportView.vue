@@ -4,6 +4,13 @@ import ReportCard from '../components/ReportCard.vue'
 import { ref } from 'vue'
 
 const isLogIn = ref(true)
+
+const acc = ref(0.9)
+const fp = ref(0.7)
+const fn = ref(0.5)
+const precision = ref(0.3)
+const recall = ref(0.1)
+const f1 = ref(0.01)
 </script>
 
 <template>
@@ -12,14 +19,11 @@ const isLogIn = ref(true)
     <template v-slot:content>
       <div class="row row-cols-1 row-cols-md-1">
         <div class="col mb-4">
-          <ReportCard>
+          <ReportCard :acc="acc" :fp="fp" :fn="fn" :precision="precision" :recall="recall" :f1="f1">
             <template v-slot:title>Normal Samples</template>
-            <template v-slot:test-time>123456 ms</template
-            ><template v-slot:test-sample-num>123456</template
-            ><template v-slot:total-sample-num>789123</template
-            ><template v-slot:acc>0.987654</template><template v-slot:fp>0.123456</template
-            ><template v-slot:fn>0.123789</template><template v-slot:precision>0.987654</template
-            ><template v-slot:recall>0.12346</template><template v-slot:f1>0.54887</template>
+            <template v-slot:test-time>123456 ms</template>
+            <template v-slot:test-sample-num>123456</template>
+            <template v-slot:total-sample-num>789123</template>
           </ReportCard>
         </div>
         <div class="col mb-4">
