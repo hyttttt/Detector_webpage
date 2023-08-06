@@ -1,0 +1,82 @@
+<script setup>
+import BasePage from '../components/BasePage.vue'
+import TestButton from '../components/buttons/TestButton.vue'
+import UpdateButton from '../components/buttons/UpdateButton.vue'
+import DeleteButton_d from '../components/buttons/DeleteButton_d.vue'
+import DeleteButton_r from '../components/buttons/DeleteButton_r.vue'
+import Addbutton from '../components/buttons/Addbutton.vue'
+import { ref } from 'vue'
+
+const isLogIn = ref(true)
+
+var uid = ref('userid')
+
+const detectors = ref([{ id: Math.random() }, { id: Math.random() }, { id: Math.random() }])
+const reports = ref([{ id: 0, sno: 0 }])
+
+function addDetector() {
+  detectors.value.push({ id: Math.random() })
+  //newDetector.value = ''
+}
+
+function addReport(d) {
+  reports.value.push({ id: Math.random(), sno: d.id })
+}
+</script>
+<template>
+  <BasePage :isLogIn="isLogIn"
+    ><template v-slot:title>Dashboard</template>
+    <template v-slot:content>
+      <div class="row">
+        <!-- dectector list start -->
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col">Detector List</div>
+                <div class="col text-right"><Addbutton /></div>
+              </div>
+            </div>
+            <ul class="list-group" id="d-list">
+              <li v-for="d in detectors" :key="d.id" class="list-group-item">
+                <div class="row">
+                  <div class="col">
+                    <a>{{ d.id }}</a>
+                  </div>
+                  <div class="col-2 text-right">
+                    <TestButton :uid="uid" :did="d.id" />
+                  </div>
+                  <div class="col-2 text-right">
+                    <UpdateButton :uid="uid" :did="d.id" />
+                  </div>
+                  <div class="col-2 text-right">
+                    <DeleteButton_d :uid="uid" :did="d.id" />
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- dectector list end -->
+
+        <!-- report list start -->
+        <div class="col">
+          <div class="card">
+            <div class="card-header">Report History</div>
+            <ul class="list-group" id="r-list">
+              <li v-for="r in reports" :key="r.id" class="list-group-item">
+                <div class="row">
+                  <div class="col">
+                    <a>Report {{ r.sno }}</a>
+                  </div>
+                  <div class="col text-right"><DeleteButton_r :uid="uid" :rid="r.id" /></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- report list end -->
+      </div></template
+    ></BasePage
+  >
+</template>

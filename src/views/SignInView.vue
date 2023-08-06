@@ -4,7 +4,7 @@ import SignPage from '../components/SignPage.vue'
 
 const router = useRouter()
 function signIn() {
-  router.push(`/core`)
+  router.push(`/dash`)
 }
 </script>
 

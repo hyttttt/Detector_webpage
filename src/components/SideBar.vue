@@ -6,9 +6,9 @@
     </div>
     <div class="row" id="decorator"></div>
     <div class="row dash-link"><a href="/about">About</a></div>
-    <div class="row dash-link"><a href="/">Dashboard</a></div>
+    <div class="row dash-link"><a href="/dash">Dashboard</a></div>
     <div class="row dash-link"><a href="/">Profile</a></div>
-    <div class="row dash-link"><a href="/">History</a></div>
+    <div class="row dash-link"><a href="/report">History</a></div>
   </div>
 </template>
 
