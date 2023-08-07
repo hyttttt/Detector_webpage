@@ -11,7 +11,7 @@ const props = defineProps({
 
 <template>
   <div class="container-fluid" id="navbar-top">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" id="navbar-content">
       <a class="navbar-brand" style="color: aliceblue" href="#"><slot name="title"></slot></a>
       <button
         class="navbar-toggler"
@@ -47,6 +47,11 @@ const props = defineProps({
   font-weight: bold;
   color: aliceblue;
   background-color: #4287f5;
+  padding-left: 0;
+}
+
+#navbar-content {
+  padding-left: 0;
 }
 
 .icons {
