@@ -17,7 +17,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="card report-card">
+  <div class="card report-card" style="border-radius: 10px">
     <h5 class="card-header"><slot name="title"></slot></h5>
     <div class="card-body">
       <p><strong>Testing Sample Number: </strong><slot name="test-sample-num"></slot></p>

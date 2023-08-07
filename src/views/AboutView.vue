@@ -9,7 +9,7 @@ const isLogIn = ref(true)
   <BasePage :isLogIn="isLogIn">
     <template v-slot:title>About</template>
     <template v-slot:content>
-      <div class="card">
+      <div class="card" style="border-radius: 10px">
         <div class="card-body">
           <div class="card-title"><h5>About title</h5></div>
           <p>

@@ -20,7 +20,7 @@ const funcs = ref([
       ><div class="row">
         <div class="col-6">
           <!-- function list start -->
-          <div class="card">
+          <div class="card" style="border-radius: 10px">
             <div class="card-header">Select Functions</div>
             <ul class="list-group" id="f-list">
               <li v-for="f in funcs" :key="f.func" class="list-group-item">
