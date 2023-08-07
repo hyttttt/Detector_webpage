@@ -1,3 +1,5 @@
+<!-- This is the base page for all pages after login -->
+
 <script setup>
 import Navbar from './Navbar.vue'
 import SideBar from './SideBar.vue'

@@ -1,5 +1,8 @@
+<!-- This is the doughnut chart -->
+<!-- props percentage in and it will draw the chart automatically-->
+
 <template>
-  <div class="pie-chart">
+  <div class="doughnut-chart">
     <svg width="100" height="100">
       <circle cx="50" cy="50" r="30" fill="none" stroke="#ddd" stroke-width="20" />
       <circle

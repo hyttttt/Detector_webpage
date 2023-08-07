@@ -5,6 +5,7 @@ import AboutView from '../views/AboutView.vue'
 import ReportView from '../views/ReportView.vue'
 import SignInView from '../views/SignInView.vue'
 import SignUpView from '../views/SignUpView.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 import TestPage from '../views/TestPage.vue'
 
@@ -37,7 +38,7 @@ const router = createRouter({
       component: DashboardView
     },
     {
-      path: '/task/:uid/:did', //user id, detector id
+      path: '/task/:did', // detector id
       name: 'task',
       component: TaskView
     },
@@ -45,6 +46,11 @@ const router = createRouter({
       path: '/report',
       name: 'report',
       component: ReportView
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: ProfileView
     }
   ]
 })

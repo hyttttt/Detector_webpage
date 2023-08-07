@@ -1,7 +1,8 @@
+<!-- This is the delete report button -->
+
 <script setup>
 const props = defineProps({
-  uid: String,
-  rid: Number
+  rid: String
 })
 </script>
 

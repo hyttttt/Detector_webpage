@@ -1,3 +1,5 @@
+<!-- This is the side bar in base page-->
+
 <template>
   <div class="container-fluid" id="side-bar">
     <div class="row">
@@ -7,8 +9,7 @@
     <div class="row" id="decorator"></div>
     <div class="row dash-link"><a href="/about">About</a></div>
     <div class="row dash-link"><a href="/dash">Dashboard</a></div>
-    <div class="row dash-link"><a href="/">Profile</a></div>
-    <div class="row dash-link"><a href="/report">History</a></div>
+    <div class="row dash-link"><a href="/profile">Profile</a></div>
   </div>
 </template>
 

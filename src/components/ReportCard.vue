@@ -1,3 +1,8 @@
+<!-- This is a report card that shows the report of a selected fuction -->
+<!-- slots for: title (function name), testing sample number, total sample number, -->
+<!--            testing time (max, min, avg, total)-->
+<!-- props the result in-->
+
 <script setup>
 import ReportDoughnut from './ReportDoughnut.vue'
 
@@ -15,8 +20,8 @@ const props = defineProps({
   <div class="card report-card">
     <h5 class="card-header"><slot name="title"></slot></h5>
     <div class="card-body">
-      <p>Testing Sample Number: <slot name="test-sample-num"></slot></p>
-      <p>Total Sample Number: <slot name="total-sample-num"></slot></p>
+      <p><strong>Testing Sample Number: </strong><slot name="test-sample-num"></slot></p>
+      <p><strong>Total Sample Number: </strong><slot name="test-sample-num"></slot></p>
 
       <!-- charts start -->
       <div class="row">

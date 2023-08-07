@@ -1,9 +1,10 @@
+<!-- This is the execute button to send task-->
+
 <script setup>
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
-  uid: String,
-  did: Number,
+  did: String,
   func: Object
 })
 

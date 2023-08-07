@@ -1,3 +1,5 @@
+<!-- This is the navigation bar in base page-->
+
 <script setup>
 import LogOutButton from './buttons/LogOutButton.vue'
 import LogInButton from './buttons/LogInButton.vue'

@@ -1,4 +1,4 @@
-<script setup></script>
+<!-- This is the base page for sign in and sign up page -->
 
 <template>
   <div class="container-fluid">

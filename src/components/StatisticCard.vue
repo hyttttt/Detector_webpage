@@ -1,3 +1,5 @@
+<!-- This shows some statistic in the dashboard page -->
+
 <template>
   <div class="card statistic-card">
     <div class="row">

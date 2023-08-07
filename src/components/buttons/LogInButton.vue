@@ -1,3 +1,5 @@
+<!-- This is the user log in button -->
+
 <script setup>
 import { useRouter } from 'vue-router'
 const router = useRouter()

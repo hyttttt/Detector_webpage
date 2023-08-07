@@ -1,9 +1,10 @@
+<!-- This is the view report button -->
+
 <script setup>
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
-  uid: String,
-  did: Number
+  did: String
 })
 
 const router = useRouter()

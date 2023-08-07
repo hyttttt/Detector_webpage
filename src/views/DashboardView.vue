@@ -11,20 +11,10 @@ import { ref } from 'vue'
 
 const isLogIn = ref(true)
 
-var uid = ref('userid')
-
 const detectors = ref([{ id: Math.random() }, { id: Math.random() }, { id: Math.random() }])
 const reports = ref([{ id: 0, sno: 0 }])
-
-function addDetector() {
-  detectors.value.push({ id: Math.random() })
-  //newDetector.value = ''
-}
-
-function addReport(d) {
-  reports.value.push({ id: Math.random(), sno: d.id })
-}
 </script>
+
 <template>
   <BasePage :isLogIn="isLogIn">
     <template v-slot:title>Dashboard</template>
@@ -88,13 +78,13 @@ function addReport(d) {
                     <a>{{ d.id }}</a>
                   </div>
                   <div class="col-2 text-right">
-                    <TestButton :uid="uid" :did="d.id" />
+                    <TestButton :did="d.id" />
                   </div>
                   <div class="col-2 text-right">
-                    <UpdateButton :uid="uid" :did="d.id" />
+                    <UpdateButton :did="d.id" />
                   </div>
                   <div class="col-2 text-right">
-                    <DeleteButton_d :uid="uid" :did="d.id" />
+                    <DeleteButton_d :did="d.id" />
                   </div>
                 </div>
               </li>
@@ -113,8 +103,8 @@ function addReport(d) {
                   <div class="col">
                     <a>Report {{ r.sno }}</a>
                   </div>
-                  <div class="col-2 text-right"><ViewReportButton :uid="uid" :rid="r.id" /></div>
-                  <div class="col-2 text-right"><DeleteButton_r :uid="uid" :rid="r.id" /></div>
+                  <div class="col-2 text-right"><ViewReportButton :rid="r.id" /></div>
+                  <div class="col-2 text-right"><DeleteButton_r :rid="r.id" /></div>
                 </div>
               </li>
             </ul>

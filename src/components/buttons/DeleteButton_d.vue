@@ -1,7 +1,8 @@
+<!-- This is the delete detector button -->
+
 <script setup>
 const props = defineProps({
-  uid: String,
-  did: Number
+  did: String
 })
 </script>
 

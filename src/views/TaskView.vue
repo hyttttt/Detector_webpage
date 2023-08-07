@@ -1,7 +1,5 @@
 <script setup>
 import { ref, computed } from 'vue'
-import Navbar from '../components/Navbar.vue'
-import LogOutButton from '../components/buttons/LogOutButton.vue'
 import ExeButton from '../components/buttons/ExeButton.vue'
 import BasePage from '../components/BasePage.vue'
 

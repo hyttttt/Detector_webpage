@@ -1,3 +1,7 @@
+<!-- This binds the report statistic and doughnut chart together -->
+<!-- slot for title (name of the criterion) -->
+<!-- props the statistic in -->
+
 <script setup>
 import DoughnutChart from './DoughnutChart.vue'
 

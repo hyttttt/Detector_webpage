@@ -1,14 +1,16 @@
+<!-- This is the detector test button -->
+<!-- click and go to choose functions -->
+
 <script setup>
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
-  uid: String,
-  did: Number
+  did: String
 })
 
 const router = useRouter()
 function testPage() {
-  router.push(`/task/${props.uid}/${props.did}`)
+  router.push(`/task/${props.did}`)
 }
 </script>
 
