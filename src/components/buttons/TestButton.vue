@@ -9,13 +9,13 @@ const props = defineProps({
 })
 
 const router = useRouter()
-function testPage() {
+function taskPage() {
   router.push(`/task/${props.did}`)
 }
 </script>
 
 <template>
   <div>
-    <button type="button" class="btn btn-primary" @click="testPage">Test</button>
+    <button type="button" class="btn btn-primary" @click="taskPage">Test</button>
   </div>
 </template>
