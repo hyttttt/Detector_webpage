@@ -12,6 +12,12 @@ export default defineConfig({
     }
   },
   server: {
-    port: 8000
+    port: 8000,
+    proxy: {
+      '/api': {
+        target: 'http://140.118.155.18:8000',
+        changeOrigin: true
+      }
+    }
   }
 })

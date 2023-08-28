@@ -6,7 +6,7 @@ const props = defineProps({
 })
 
 function removeDetector(d) {
-  fetch('/api/report')
+  fetch('/api/detector')
     .then((response) => {
       return response.json()
     })
@@ -14,13 +14,6 @@ function removeDetector(d) {
       console.log(response)
     })
     .catch((error) => console.error(error))
-  /*.then((response) => response.json())*/
-  /*.then((data) => {
-      console.log(data)
-    })
-    .catch((error) => {
-      console.error(error)
-    })*/
 }
 </script>
 
