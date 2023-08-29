@@ -4,12 +4,12 @@
 import { useRouter } from 'vue-router'
 
 const props = defineProps({
-  did: String
+  rid: String
 })
 
 const router = useRouter()
 function testPage() {
-  router.push(`/report`)
+  router.push(`/report/${props.rid}`)
 }
 </script>
 

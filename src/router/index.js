@@ -43,7 +43,7 @@ const router = createRouter({
       component: TaskView
     },
     {
-      path: '/report',
+      path: '/report/:id',
       name: 'report',
       component: ReportView
     },

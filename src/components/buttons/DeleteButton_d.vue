@@ -5,16 +5,7 @@ const props = defineProps({
   did: String
 })
 
-function removeDetector(d) {
-  fetch('/api/detector')
-    .then((response) => {
-      return response.json()
-    })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => console.error(error))
-}
+function removeDetector(d) {}
 </script>
 
 <template>
