@@ -1,7 +1,7 @@
 <script setup>
-import { ref, computed } from 'vue'
 import ExeButton from '../components/buttons/ExeButton.vue'
 import BasePage from '../components/BasePage.vue'
+import { ref } from 'vue'
 
 const isLogIn = ref(true)
 
