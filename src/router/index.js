@@ -23,7 +23,7 @@ const router = createRouter({
     {
       path: '/testPage',
       name: 'testPage',
-      component: LoadingView
+      component: TestPage
     },
     {
       path: '/loading/:page',
