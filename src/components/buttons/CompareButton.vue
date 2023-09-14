@@ -9,8 +9,14 @@ const props = defineProps({
 
 const router = useRouter()
 function compare() {
-  //router.push(`/report/${props.reports}`)
-  //console.log(props.reports)
+  // get report id list
+  var rids = []
+  for (let r of props.reports) {
+    rids.push(r.report_id)
+  }
+  rids = rids.join(',')
+
+  router.push(`/comparingReports/${rids}`)
 }
 </script>
 

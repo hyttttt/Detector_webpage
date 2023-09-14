@@ -9,7 +9,28 @@ const isLogIn = ref(true)
 const reports = ref([])
 var num = 0
 
-fetch('/api/report')
+for (var i = 0; i < 5; i++) {
+  reports.value.push({
+    num: ++num,
+    check: false,
+    report_id: Math.random(),
+    function_type: Math.random(),
+    accuracy: Math.random(),
+    fp: Math.random(),
+    fn: Math.random(),
+    precision: Math.random(),
+    recall: Math.random(),
+    f1: Math.random(),
+    avg_time: Math.random(),
+    min_time: Math.random(),
+    max_time: Math.random(),
+    testing_time: Math.random(),
+    testing_sample_num: Math.random(),
+    total_sample_num: Math.random()
+  })
+}
+
+/*fetch('/api/report')
   .then((response) => {
     return response.json()
   })
@@ -35,7 +56,7 @@ fetch('/api/report')
       })
     })
   })
-  .catch((error) => console.error(error))
+  .catch((error) => console.error(error))*/
 </script>
 
 <template>

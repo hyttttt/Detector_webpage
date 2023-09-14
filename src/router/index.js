@@ -7,6 +7,7 @@ import SignInView from '../views/SignInView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import ComparingView from '../views/ComparingView.vue'
+import ComparingReportsView from '../views/ComparingReportsView.vue'
 import LoadingView from '../views/LoadingView.vue'
 
 import TestPage from '../views/TestPage.vue'
@@ -68,6 +69,11 @@ const router = createRouter({
       path: '/comparing',
       name: 'comparing',
       component: ComparingView
+    },
+    {
+      path: '/comparingReports/:ids',
+      name: 'comparingReports',
+      component: ComparingReportsView
     }
   ]
 })

@@ -33,7 +33,7 @@ const props = defineProps({
 }
 
 #bg-bottom {
-  height: 60vh;
+  height: 100vh;
   background-color: aliceblue;
 }
 
