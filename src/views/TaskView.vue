@@ -5,22 +5,42 @@ import { ref } from 'vue'
 
 const isLogIn = ref(true)
 
+const props = defineProps({
+  load: Boolean
+})
+
+const loading = ref(false)
+if (props.load) loading.value = true
+
 const funcs = ref([
-  { func: 'Normal Samples', check: false },
-  { func: 'Sequence-based AEs', check: false },
-  { func: 'Structure-based AEs', check: false },
-  { func: 'Cross-arch Samples', check: false }
+  { func: '00', check: false },
+  { func: '09', check: false },
+  { func: '12', check: false },
+  { func: '1b', check: false }
 ])
+
+// get detector id from url
+var urlString = window.location.href
+var url = new URL(urlString)
+var pathParts = url.pathname.split('/')
+const did = ref(pathParts[pathParts.length - 1])
 </script>
 
 <template>
-  <BasePage :isLogIn="isLogIn"
-    ><template v-slot:title>Select functions</template>
+  <BasePage :isLogIn="isLogIn">
+    <template v-slot:title>Select functions</template>
     <template v-slot:content
       ><div class="row">
         <div class="col-6">
           <!-- function list start -->
-          <div class="card" style="border-radius: 10px">
+          <div v-if="loading" class="card" style="border-radius: 10px">
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border text-primary m-5" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <div v-else class="card" style="border-radius: 10px">
             <div class="card-header">Select Functions</div>
             <ul class="list-group" id="f-list">
               <li v-for="f in funcs" :key="f.func" class="list-group-item">
@@ -31,10 +51,13 @@ const funcs = ref([
           </div>
           <!-- function list end -->
 
-          <div id="exe-btn"><ExeButton /></div>
+          <div id="exe-btn">
+            <ExeButton :did="did" :funcs="funcs.filter((f) => f.check == true)" />
+          </div>
         </div>
-      </div> </template
-  ></BasePage>
+      </div>
+    </template>
+  </BasePage>
 </template>
 
 <style scoped>

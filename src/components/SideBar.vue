@@ -19,6 +19,10 @@ function profilePage() {
 function comparingPage() {
   router.push(`/comparing`)
 }
+
+function testPage() {
+  router.push(`/testPage`)
+}
 </script>
 
 <template>
@@ -32,6 +36,7 @@ function comparingPage() {
     <div class="row side-link"><a @click="dashboardPage" class="link">Dashboard</a></div>
     <div class="row side-link"><a @click="profilePage" class="link">Profile</a></div>
     <div class="row side-link"><a @click="comparingPage" class="link">Comparing</a></div>
+    <div class="row side-link"><a @click="testPage" class="link">TEST PAGE</a></div>
   </div>
 </template>
 

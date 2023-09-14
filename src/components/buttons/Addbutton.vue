@@ -2,28 +2,27 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const fileInput = ref()
 
 function addDetector() {
-  // test upload
-  console.log(fileInput.value.files[0])
+  router.push('/loading/dash')
 
-  /* post /detector [parameters:file] */
-  /*var formData = new FormData()
+  var formData = new FormData()
   formData.append('file', fileInput.value.files[0])
 
-  fetch('/detector', {
+  fetch('/api/detector', {
     method: 'POST',
     body: formData
   })
     .then((response) => {
-      return response.json()
-    })
-    .then((response) => {
+      router.push(`/dash`)
+      console.log('[SUCCESS] Upload Detector')
       console.log(response)
     })
-    .catch((error) => console.error(error))*/
+    .catch((error) => console.error(error))
 }
 </script>
 

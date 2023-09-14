@@ -7,6 +7,7 @@ import SignInView from '../views/SignInView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import ComparingView from '../views/ComparingView.vue'
+import LoadingView from '../views/LoadingView.vue'
 
 import TestPage from '../views/TestPage.vue'
 
@@ -17,6 +18,16 @@ const router = createRouter({
       path: '/',
       name: 'home',
       redirect: '/signIn'
+    },
+    {
+      path: '/testPage',
+      name: 'testPage',
+      component: LoadingView
+    },
+    {
+      path: '/loading/:page',
+      name: 'loading',
+      component: LoadingView
     },
     {
       path: '/signIn',

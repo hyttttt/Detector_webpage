@@ -11,6 +11,13 @@ import { ref } from 'vue'
 
 const isLogIn = ref(true)
 
+const props = defineProps({
+  load: Boolean
+})
+
+const loading = ref(false)
+if (props.load) loading.value = true
+
 // get detector list
 const detectors = ref([])
 
@@ -104,6 +111,7 @@ fetch('/api/report')
           </StatisticCard>
         </div>
       </div>
+
       <div class="row">
         <!-- dectector list start -->
         <div class="col">
@@ -115,7 +123,14 @@ fetch('/api/report')
               </div>
             </div>
             <ul class="list-group" id="d-list">
-              <li v-for="d in detectors" :key="d.detector_id" class="list-group-item">
+              <li v-if="loading">
+                <div class="d-flex justify-content-center">
+                  <div class="spinner-border text-primary m-5" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+              </li>
+              <li v-else v-for="d in detectors" :key="d.detector_id" class="list-group-item">
                 <div class="row">
                   <div class="col">
                     <a>{{ d.detector_name }}</a>
@@ -146,7 +161,12 @@ fetch('/api/report')
               </div>
             </div>
             <ul class="list-group" id="r-list">
-              <li v-for="r in reports" :key="r.report_id" class="list-group-item">
+              <li v-if="loading">
+                <div class="d-flex justify-content-center">
+                  <div class="spinner-border text-primary m-5" role="status"></div>
+                </div>
+              </li>
+              <li v-else v-for="r in reports" :key="r.report_id" class="list-group-item">
                 <div class="row">
                   <div class="col">
                     <a>Report {{ r.report_id }}</a>
