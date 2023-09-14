@@ -23,6 +23,8 @@ const detectors = ref([])
 
 fetch('/api/detector')
   .then((response) => {
+    console.log('detector')
+    console.log(response)
     return response.json()
   })
   .then((response) => {
@@ -40,6 +42,8 @@ fetch('/api/detector')
 const reports = ref([])
 fetch('/api/report')
   .then((response) => {
+    console.log('report')
+    console.log(response)
     return response.json()
   })
   .then((response) => {

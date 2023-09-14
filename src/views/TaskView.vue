@@ -1,6 +1,7 @@
 <script setup>
 import ExeButton from '../components/buttons/ExeButton.vue'
 import BasePage from '../components/BasePage.vue'
+import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 
 const isLogIn = ref(true)
@@ -20,10 +21,8 @@ const funcs = ref([
 ])
 
 // get detector id from url
-var urlString = window.location.href
-var url = new URL(urlString)
-var pathParts = url.pathname.split('/')
-const did = ref(pathParts[pathParts.length - 1])
+const route = useRoute()
+const did = ref(route.params.did)
 </script>
 
 <template>

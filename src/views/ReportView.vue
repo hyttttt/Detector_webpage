@@ -7,18 +7,23 @@ import { ref } from 'vue'
 const isLogIn = ref(true)
 
 const route = useRoute()
-const id = route.params.id
+var ids = route.params.ids
+ids = ids.split(',')
 
 // get report
-const report = ref('')
-fetch(`/api/report/${id}`)
-  .then((response) => {
-    return response.json()
-  })
-  .then((response) => {
-    report.value = response
-  })
-  .catch((error) => console.error(error))
+const reports = ref([])
+reports.value = ids
+
+/*for (let id of ids) {
+  fetch(`/api/report/${id}`)
+    .then((response) => {
+      return response.json()
+    })
+    .then((response) => {
+      reports.value.push(response)
+    })
+    .catch((error) => console.error(error))
+}*/
 </script>
 
 <template>
@@ -26,6 +31,7 @@ fetch(`/api/report/${id}`)
     <template v-slot:title>Report</template>
     <template v-slot:content>
       <div class="row row-cols-1 row-cols-md-1">
+        <!--
         <div class="col mb-4">
           <ReportCard
             :acc="report.accuracy"
@@ -44,14 +50,12 @@ fetch(`/api/report/${id}`)
             <template v-slot:test-time-total>{{ report.testing_time }}</template>
           </ReportCard>
         </div>
-        <!--
-        <div class="col mb-4">
-          <ReportCard> <template v-slot:title>Sequence-based AEs</template> </ReportCard>
-        </div>
-        <div class="col mb-4">
-          <ReportCard> <template v-slot:title>Structure-based AEs</template> </ReportCard>
-        </div>
         -->
+        <div v-for="r in reports" :key="r" class="col mb-4">
+          <ReportCard>
+            <template v-slot:title>{{ r }}</template>
+          </ReportCard>
+        </div>
       </div>
     </template>
   </BasePage>
