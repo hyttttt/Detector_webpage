@@ -9,6 +9,7 @@ import ProfileView from '../views/ProfileView.vue'
 import ComparingView from '../views/ComparingView.vue'
 import ComparingReportsView from '../views/ComparingReportsView.vue'
 import LoadingView from '../views/LoadingView.vue'
+import LeaderBoardView from '../views/LeaderBoardView.vue'
 
 import TestPage from '../views/TestPage.vue'
 
@@ -74,6 +75,11 @@ const router = createRouter({
       path: '/comparingReports/:ids',
       name: 'comparingReports',
       component: ComparingReportsView
+    },
+    {
+      path: '/leaderboard',
+      name: 'leaderboard',
+      component: LeaderBoardView
     }
   ]
 })

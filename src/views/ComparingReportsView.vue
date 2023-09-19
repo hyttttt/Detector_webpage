@@ -29,19 +29,19 @@ const total_sample_num = ref([])
 
 for (let id of ids) {
   report_id.value.push(id)
-  function_type.value.push(Math.random().toString())
-  accuracy.value.push(Math.random())
-  fp.value.push(Math.random())
-  fn.value.push(Math.random())
-  precision.value.push(Math.random())
-  recall.value.push(Math.random())
-  f1.value.push(Math.random())
-  avg_time.value.push(Math.random())
-  min_time.value.push(Math.random())
-  max_time.value.push(Math.random())
-  testing_time.value.push(Math.random())
-  testing_sample_num.value.push(Math.random())
-  total_sample_num.value.push(Math.random())
+  function_type.value.push(Math.random().toFixed(6).toString())
+  accuracy.value.push(Math.random().toFixed(6))
+  fp.value.push(Math.random().toFixed(6))
+  fn.value.push(Math.random().toFixed(6))
+  precision.value.push(Math.random().toFixed(6))
+  recall.value.push(Math.random().toFixed(6))
+  f1.value.push(Math.random().toFixed(6))
+  avg_time.value.push(Math.random().toFixed(6))
+  min_time.value.push(Math.random().toFixed(6))
+  max_time.value.push(Math.random().toFixed(6))
+  testing_time.value.push(Math.random().toFixed(6))
+  testing_sample_num.value.push(Math.random().toFixed(6))
+  total_sample_num.value.push(Math.random().toFixed(6))
 }
 
 /*for (let id of ids) {
@@ -77,8 +77,15 @@ const bar_caption = ref([])
 
 // choose the color of bar
 function color_map(i) {
-  const colors = ['#E05E66', '#FFB04B', '#65B773', '#5EB6E0', '#4287f5', '#AB74F7']
-  return colors[i % colors.length]
+  const colors = [
+    '#E05E66' /*red*/,
+    '#FFB04B' /*yellow*/,
+    '#65B773' /*green*/,
+    '#5EB6E0' /*light blue*/,
+    '#4287f5' /*blue*/,
+    '#AB74F7' /*purple*/
+  ]
+  return colors[colors.length - (i % colors.length) - 1]
 }
 
 // select subject and change the bar chart data
@@ -115,7 +122,7 @@ function select_subject(name) {
   }
 
   for (let i = 0; i < temp.length; i++) {
-    var h = (temp[i].value / max) * bar_height.value
+    var h = (temp[i].value / max) * bar_height.value * 0.9
 
     bar_data.value.push({
       id: temp[i].id,
@@ -132,16 +139,21 @@ function select_subject(name) {
   }
 
   // make caption of bar chart
+  var y = 40
   for (let i = 0; i < bar_data.value.length; i++) {
     bar_caption.value.push({
       id: bar_data.value[i].id,
-      x: 10,
-      y: 10,
-      width: 10,
-      height: 10,
+      x: x + 50,
+      y: y,
+      width: 20,
+      height: 20,
       fill: bar_data.value[i].fill
     })
+
+    y += 40
   }
+
+  window.scrollTo(0, document.body.scrollHeight)
 }
 
 // default bar chart is accuracy
@@ -158,61 +170,61 @@ select_subject('accuracy')
           <table class="table table-bordered table-hover">
             <thead class="thead-light">
               <tr>
-                <th>ID</th>
+                <th style="cursor: default">ID</th>
                 <th v-for="r in report_id" :key="r">{{ r }}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th>function type</th>
+                <th style="cursor: default">Function type</th>
                 <td v-for="r in function_type" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('accuracy')">accuracy</th>
+                <th @click="select_subject('accuracy')">Accuracy</th>
                 <td v-for="r in accuracy" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('fp')">fp</th>
+                <th @click="select_subject('fp')">FP</th>
                 <td v-for="r in fp" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('fn')">fn</th>
+                <th @click="select_subject('fn')">FN</th>
                 <td v-for="r in fn" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('precision')">precision</th>
+                <th @click="select_subject('precision')">Precision</th>
                 <td v-for="r in precision" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('recall')">recall</th>
+                <th @click="select_subject('recall')">Recall</th>
                 <td v-for="r in recall" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('f1')">f1</th>
+                <th @click="select_subject('f1')">F1</th>
                 <td v-for="r in f1" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('avg_time')">average time</th>
+                <th @click="select_subject('avg_time')">Average testing time</th>
                 <td v-for="r in avg_time" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('min_time')">min time</th>
+                <th @click="select_subject('min_time')">Min testing time</th>
                 <td v-for="r in min_time" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('max_time')">max time</th>
+                <th @click="select_subject('max_time')">Max testing time</th>
                 <td v-for="r in max_time" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('testing_time')">testing time</th>
+                <th @click="select_subject('testing_time')">Total testing time</th>
                 <td v-for="r in testing_time" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('testing_sample_num')">testing sample number</th>
+                <th @click="select_subject('testing_sample_num')">Testing sample number</th>
                 <td v-for="r in testing_sample_num" :key="r">{{ r }}</td>
               </tr>
               <tr>
-                <th @click="select_subject('total_sample_num')">total sample number</th>
+                <th @click="select_subject('total_sample_num')">Total sample number</th>
                 <td v-for="r in total_sample_num" :key="r">{{ r }}</td>
               </tr>
             </tbody>
@@ -220,7 +232,12 @@ select_subject('accuracy')
           <!-- table end -->
 
           <!-- chart start -->
-          <BarChart :bar_data="bar_data" :bar_height="bar_height" :bar_width="bar_width"></BarChart>
+          <BarChart
+            :bar_data="bar_data"
+            :bar_height="bar_height"
+            :bar_width="bar_width"
+            :bar_caption="bar_caption"
+          ></BarChart>
           <!-- chart end -->
         </div>
       </div>
