@@ -50,32 +50,43 @@ for (let id of ids) {
       return response.json()
     })
     .then((response) => {
-      reports.value.push({
-        report_id: response.report_id,
-        function_type: response.function_type,
-        accuracy: response.accuracy,
-        fp: response.fp,
-        fn: response.fn,
-        precision: response.precision,
-        recall: response.recall,
-        f1: response.f1,
-        avg_time: response.avg_time,
-        min_time: response.min_time,
-        max_time: response.max_time,
-        testing_time: response.testing_time,
-        testing_sample_num: response.testing_sample_num,
-        total_sample_num: response.total_sample_num
-      })
+      report_id.value.push(response.report_id)
+      function_type.value.push(response.function_type)
+      accuracy.value.push(response.accuracy)
+      fp.value.push(response.fp)
+      fn.value.push(response.fn)
+      precision.value.push(response.precision)
+      recall.value.push(response.recall)
+      f1.value.push(response.f1)
+      avg_time.value.push(response.avg_time)
+      min_time.value.push(response.min_time)
+      max_time.value.push(response.max_time)
+      testing_time.value.push(response.testing_time)
+      testing_sample_num.value.push(response.testing_sample_num)
+      total_sample_num.value.push(response.total_sample_num)
     })
     .catch((error) => console.error(error))
 }*/
 
 // bar chart data
-const data = ref([])
+const bar_data = ref([])
+const bar_height = ref(300)
+const bar_width = ref(50)
+const bar_gap = ref(20)
+const bar_caption = ref([])
 
+// choose the color of bar
+function color_map(i) {
+  const colors = ['#E05E66', '#FFB04B', '#65B773', '#5EB6E0', '#4287f5', '#AB74F7']
+  return colors[i % colors.length]
+}
+
+// select subject and change the bar chart data
 function select_subject(name) {
-  data.value = []
+  bar_data.value = []
+  var temp = []
 
+  // get the corresponding subject data
   for (let i = 0; i < report_id.value.length; i++) {
     var id = report_id.value[i]
     var value = 0
@@ -93,9 +104,48 @@ function select_subject(name) {
     else if (name == 'testing_sample_num') value = testing_sample_num.value[i]
     else if (name == 'total_sample_num') value = total_sample_num.value[i]
 
-    data.value.push({ id: id, value: value, name: name })
+    temp.push({ id: id, value: value, name: name })
+  }
+
+  // tranform value into bar chart position and size
+  var x = 0
+  var max = 0
+  for (let i = 0; i < temp.length; i++) {
+    if (max < temp[i].value) max = temp[i].value
+  }
+
+  for (let i = 0; i < temp.length; i++) {
+    var h = (temp[i].value / max) * bar_height.value
+
+    bar_data.value.push({
+      id: temp[i].id,
+      value: temp[i].value,
+      name: temp[i].name,
+      x: x,
+      y: bar_height.value - h,
+      width: bar_width.value,
+      height: h,
+      fill: color_map(i)
+    })
+
+    x += bar_width.value + bar_gap.value
+  }
+
+  // make caption of bar chart
+  for (let i = 0; i < bar_data.value.length; i++) {
+    bar_caption.value.push({
+      id: bar_data.value[i].id,
+      x: 10,
+      y: 10,
+      width: 10,
+      height: 10,
+      fill: bar_data.value[i].fill
+    })
   }
 }
+
+// default bar chart is accuracy
+select_subject('accuracy')
 </script>
 
 <template>
@@ -170,7 +220,7 @@ function select_subject(name) {
           <!-- table end -->
 
           <!-- chart start -->
-          <BarChart :reports="data"></BarChart>
+          <BarChart :bar_data="bar_data" :bar_height="bar_height" :bar_width="bar_width"></BarChart>
           <!-- chart end -->
         </div>
       </div>
