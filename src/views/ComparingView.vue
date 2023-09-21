@@ -13,8 +13,8 @@ for (var i = 0; i < 5; i++) {
   reports.value.push({
     num: ++num,
     check: false,
-    report_id: Math.random(),
-    function_type: Math.random(),
+    report_id: Math.random().toFixed(8) * (10 ** 8).toString(),
+    function_type: Math.random().toFixed(6) * (10 ** 6).toString(),
     accuracy: Math.random(),
     fp: Math.random(),
     fn: Math.random(),

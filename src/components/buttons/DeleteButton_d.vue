@@ -16,8 +16,6 @@ function removeDetector() {
   })
     .then((response) => {
       router.push(`/dash`)
-      console.log('[SUCCESS] Delete Detector')
-      console.log(response)
     })
     .catch((error) => console.error(error))
 }

@@ -12,7 +12,17 @@ const props = defineProps({
 <template>
   <div class="container-fluid" id="navbar-top">
     <nav class="navbar navbar-expand-lg" id="navbar-content">
-      <a class="navbar-brand" style="color: aliceblue" href="#"><slot name="title"></slot></a>
+      <a
+        class="navbar-brand"
+        style="
+          color: aliceblue;
+          font-family: 'Noto Sans', 'Microsoft JhengHei';
+          font-weight: bolder;
+          -webkit-text-stroke: 0.5px;
+        "
+        href="#"
+        ><slot name="title"></slot
+      ></a>
       <button
         class="navbar-toggler"
         type="button"

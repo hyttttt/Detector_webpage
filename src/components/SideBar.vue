@@ -41,7 +41,7 @@ function testPage() {
     <div class="row side-link"><a @click="profilePage" class="link">Profile</a></div>
     <div class="row side-link"><a @click="comparingPage" class="link">Comparing</a></div>
     <div class="row side-link"><a @click="leaderboardPage" class="link">Leaderboard</a></div>
-    <div class="row side-link"><a @click="testPage" class="link">TEST PAGE</a></div>
+    <!-- <div class="row side-link"><a @click="testPage" class="link">TEST PAGE</a></div> -->
   </div>
 </template>
 
@@ -51,8 +51,9 @@ function testPage() {
   padding: 10% 20%;
   border-radius: 10px;
   background-color: white;
-  font-family: 'Noto Sans';
-  font-weight: bold;
+  font-family: 'Noto Sans', 'Microsoft JhengHei';
+  font-weight: bolder;
+  -webkit-text-stroke: 0.5px;
 }
 
 #decorator {

@@ -19,6 +19,7 @@
 .statistic-card {
   height: 15vh;
   padding: 5%;
+  border: 0;
 }
 
 #card-descibe {

@@ -19,7 +19,9 @@ const loading = ref(false)
 if (props.load) loading.value = true
 
 // get detector list
-const detectors = ref([])
+const detectors = ref([
+  { detector_id: 'test_did', detector_name: 'test_dname', file_id: 'test_fid' }
+])
 
 fetch('/api/detector')
   .then((response) => {
@@ -39,7 +41,7 @@ fetch('/api/detector')
   .catch((error) => console.error(error))
 
 // get report list
-const reports = ref([])
+const reports = ref([{ report_id: 'test_rid' }])
 fetch('/api/report')
   .then((response) => {
     console.log('report')
@@ -73,6 +75,7 @@ fetch('/api/report')
   <BasePage :isLogIn="isLogIn">
     <template v-slot:title>Dashboard</template>
     <template v-slot:content>
+      <!-- Statistic cards row start -->
       <div class="row" id="row-statistic">
         <div class="col">
           <StatisticCard>
@@ -115,6 +118,7 @@ fetch('/api/report')
           </StatisticCard>
         </div>
       </div>
+      <!-- Statistic cards row end -->
 
       <div class="row">
         <!-- dectector list start -->
