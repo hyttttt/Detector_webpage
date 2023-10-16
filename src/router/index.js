@@ -10,6 +10,7 @@ import ComparingView from '../views/ComparingView.vue'
 import ComparingReportsView from '../views/ComparingReportsView.vue'
 import LoadingView from '../views/LoadingView.vue'
 import LeaderBoardView from '../views/LeaderBoardView.vue'
+import CallbackView from '../views/CallbackView.vue'
 
 import TestPage from '../views/TestPage.vue'
 
@@ -80,6 +81,11 @@ const router = createRouter({
       path: '/leaderboard',
       name: 'leaderboard',
       component: LeaderBoardView
+    },
+    {
+      path: '/auth/callback?code=:token_code',
+      name: 'callback',
+      component: CallbackView
     }
   ]
 })

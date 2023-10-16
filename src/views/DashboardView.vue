@@ -12,7 +12,8 @@ import { ref } from 'vue'
 const isLogIn = ref(true)
 
 const props = defineProps({
-  load: Boolean
+  load: Boolean,
+  auth: String
 })
 
 const loading = ref(false)
@@ -23,10 +24,11 @@ const detectors = ref([
   { detector_id: 'test_did', detector_name: 'test_dname', file_id: 'test_fid' }
 ])
 
-fetch('/api/detector')
+fetch('/api/detector', {
+  method: 'GET',
+  headers: { Authorization: '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' }
+})
   .then((response) => {
-    console.log('detector')
-    console.log(response)
     return response.json()
   })
   .then((response) => {
@@ -42,10 +44,11 @@ fetch('/api/detector')
 
 // get report list
 const reports = ref([{ report_id: 'test_rid' }])
-fetch('/api/report')
+fetch('/api/report', {
+  method: 'GET',
+  headers: { Authorization: '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' }
+})
   .then((response) => {
-    console.log('report')
-    console.log(response)
     return response.json()
   })
   .then((response) => {

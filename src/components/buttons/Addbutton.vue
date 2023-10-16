@@ -15,7 +15,8 @@ function addDetector() {
 
   fetch('/api/detector', {
     method: 'POST',
-    body: formData
+    body: formData,
+    headers: { Authorization: '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' }
   })
     .then((response) => {
       router.push(`/dash`)
