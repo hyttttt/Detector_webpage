@@ -9,28 +9,10 @@ const isLogIn = ref(true)
 const reports = ref([])
 var num = 0
 
-for (var i = 0; i < 5; i++) {
-  reports.value.push({
-    num: ++num,
-    check: false,
-    report_id: Math.random().toFixed(8) * (10 ** 8).toString(),
-    function_type: Math.random().toFixed(6) * (10 ** 6).toString(),
-    accuracy: Math.random(),
-    fp: Math.random(),
-    fn: Math.random(),
-    precision: Math.random(),
-    recall: Math.random(),
-    f1: Math.random(),
-    avg_time: Math.random(),
-    min_time: Math.random(),
-    max_time: Math.random(),
-    testing_time: Math.random(),
-    testing_sample_num: Math.random(),
-    total_sample_num: Math.random()
-  })
-}
-
-/*fetch('/api/report')
+fetch('http://140.118.155.18:8000/api/report', {
+  method: 'GET',
+  credentials: 'include'
+})
   .then((response) => {
     return response.json()
   })
@@ -42,11 +24,11 @@ for (var i = 0; i < 5; i++) {
         report_id: r.report_id,
         function_type: r.function_type,
         accuracy: r.accuracy,
-        fp: r.fp,
-        fn: r.fn,
+        fp: r.false_positive,
+        fn: r.false_negative,
         precision: r.precision,
         recall: r.recall,
-        f1: r.f1,
+        f1: r.f1_score,
         avg_time: r.avg_time,
         min_time: r.min_time,
         max_time: r.max_time,
@@ -56,7 +38,7 @@ for (var i = 0; i < 5; i++) {
       })
     })
   })
-  .catch((error) => console.error(error))*/
+  .catch((error) => console.error(error))
 </script>
 
 <template>

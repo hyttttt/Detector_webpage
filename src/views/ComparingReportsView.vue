@@ -28,24 +28,7 @@ const testing_sample_num = ref([])
 const total_sample_num = ref([])
 
 for (let id of ids) {
-  report_id.value.push(id)
-  function_type.value.push(Math.random().toFixed(6).toString())
-  accuracy.value.push(Math.random().toFixed(6))
-  fp.value.push(Math.random().toFixed(6))
-  fn.value.push(Math.random().toFixed(6))
-  precision.value.push(Math.random().toFixed(6))
-  recall.value.push(Math.random().toFixed(6))
-  f1.value.push(Math.random().toFixed(6))
-  avg_time.value.push(Math.random().toFixed(6))
-  min_time.value.push(Math.random().toFixed(6))
-  max_time.value.push(Math.random().toFixed(6))
-  testing_time.value.push(Math.random().toFixed(6))
-  testing_sample_num.value.push(Math.random().toFixed(6))
-  total_sample_num.value.push(Math.random().toFixed(6))
-}
-
-/*for (let id of ids) {
-  fetch(`/api/report/${id}`)
+  fetch(`http://140.118.155.18:8000/api/report/${id}`, { method: 'GET', credentials: 'include' })
     .then((response) => {
       return response.json()
     })
@@ -53,11 +36,11 @@ for (let id of ids) {
       report_id.value.push(response.report_id)
       function_type.value.push(response.function_type)
       accuracy.value.push(response.accuracy)
-      fp.value.push(response.fp)
-      fn.value.push(response.fn)
+      fp.value.push(response.false_positive)
+      fn.value.push(response.false_negative)
       precision.value.push(response.precision)
       recall.value.push(response.recall)
-      f1.value.push(response.f1)
+      f1.value.push(response.f1_score)
       avg_time.value.push(response.avg_time)
       min_time.value.push(response.min_time)
       max_time.value.push(response.max_time)
@@ -66,7 +49,7 @@ for (let id of ids) {
       total_sample_num.value.push(response.total_sample_num)
     })
     .catch((error) => console.error(error))
-}*/
+}
 
 // bar chart data
 const bar_data = ref([])
