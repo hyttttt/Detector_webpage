@@ -24,7 +24,7 @@ const detectors = ref([
   { detector_id: 'test_did', detector_name: 'test_dname', file_id: 'test_fid' }
 ])
 
-fetch('/api/detector', {
+fetch(this.APIUrl + '/api/detector', {
   method: 'GET',
   credentials: "include"
 })
@@ -44,7 +44,7 @@ fetch('/api/detector', {
 
 // get report list
 const reports = ref([{ report_id: 'test_rid' }])
-fetch('/api/report', {
+fetch(this.APIUrl + '/api/report', {
   method: 'GET',
   credentials: "include"
 })
