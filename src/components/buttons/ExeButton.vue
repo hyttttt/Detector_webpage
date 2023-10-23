@@ -19,10 +19,12 @@ function execute() {
     funcs.push(f.func)
   }
 
+  // post task
   var request = { detector_id: props.did, function_type: funcs }
   var result = []
-  /*fetch('/api/task', {
+  fetch('http://140.118.155.18:8000/api/task', {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -32,19 +34,14 @@ function execute() {
       return response.json()
     })
     .then((response) => {
-      //router.push(`/dash`)
-      //console.log('[SUCCESS] Upload Detector')
-      console.log(response)
-      result = response.report_id
+      for (var i = 0; i < response.length; i++) {
+        result.push(response[i].report_id)
+      }
+
+      // jump to report page
+      router.push(`/report/${result.join(',')}`)
     })
     .catch((error) => console.error(error))
-    
-    router.push(`/report/${result.join(',')}`)
-    */
-
-  var myArray = [100, 200, 300, 400, 500]
-  var arrayAsString = myArray.join(',')
-  router.push(`/report/${arrayAsString}`)
 }
 </script>
 

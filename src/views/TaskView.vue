@@ -13,12 +13,21 @@ const props = defineProps({
 const loading = ref(false)
 if (props.load) loading.value = true
 
-const funcs = ref([
-  { func: '00', check: false },
-  { func: '09', check: false },
-  { func: '12', check: false },
-  { func: '1b', check: false }
-])
+const funcs = ref([])
+
+fetch('http://140.118.155.18:8000/api/dataset', {
+  method: 'GET',
+  credentials: 'include'
+})
+  .then((response) => {
+    return response.json()
+  })
+  .then((response) => {
+    for (var i = 0; i < response.length; i++) {
+      funcs.value.push({ func: response[i].dataset_name, check: false })
+    }
+  })
+  .catch((error) => console.error(error))
 
 // get detector id from url
 const route = useRoute()

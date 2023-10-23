@@ -20,13 +20,11 @@ const loading = ref(false)
 if (props.load) loading.value = true
 
 // get detector list
-const detectors = ref([
-  { detector_id: 'test_did', detector_name: 'test_dname', file_id: 'test_fid' }
-])
+const detectors = ref([])
 
 fetch('http://140.118.155.18:8000/api/detector', {
   method: 'GET',
-  credentials: "include"
+  credentials: 'include'
 })
   .then((response) => {
     return response.json()
@@ -43,10 +41,10 @@ fetch('http://140.118.155.18:8000/api/detector', {
   .catch((error) => console.error(error))
 
 // get report list
-const reports = ref([{ report_id: 'test_rid' }])
+const reports = ref([])
 fetch('http://140.118.155.18:8000/api/report', {
   method: 'GET',
-  credentials: "include"
+  credentials: 'include'
 })
   .then((response) => {
     return response.json()

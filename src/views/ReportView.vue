@@ -6,16 +6,16 @@ import { ref } from 'vue'
 
 const isLogIn = ref(true)
 
+// get report ids from url
 const route = useRoute()
 var ids = route.params.ids
 ids = ids.split(',')
 
 // get report
 const reports = ref([])
-reports.value = ids
 
-/*for (let id of ids) {
-  fetch(`/api/report/${id}`)
+for (let id of ids) {
+  fetch(`http://140.118.155.18:8000//api/report/${id}`, { method: 'GET', credentials: 'include' })
     .then((response) => {
       return response.json()
     })
@@ -23,7 +23,10 @@ reports.value = ids
       reports.value.push(response)
     })
     .catch((error) => console.error(error))
-}*/
+}
+
+console.log('reports')
+console.log(reports.value)
 </script>
 
 <template>
@@ -31,29 +34,22 @@ reports.value = ids
     <template v-slot:title>Report</template>
     <template v-slot:content>
       <div class="row row-cols-1 row-cols-md-1">
-        <!--
-        <div class="col mb-4">
+        <div v-for="r in reports" :key="r.report_id" class="col mb-4">
           <ReportCard
-            :acc="report.accuracy"
-            :fp="report.fp"
-            :fn="report.fn"
-            :precision="report.precision"
-            :recall="report.recall"
-            :f1="report.f1"
+            :acc="r.accuracy"
+            :fp="r.false_positive"
+            :fn="r.false_negative"
+            :precision="r.precision"
+            :recall="r.recall"
+            :f1="r.f1_score"
           >
-            <template v-slot:title>{{ report.function_type }}</template>
-            <template v-slot:test-sample-num>{{ report.testing_sample_num }}</template>
-            <template v-slot:total-sample-num>{{ report.total_sample_num }}</template>
-            <template v-slot:test-time-max>{{ report.max_time }}</template>
-            <template v-slot:test-time-min>{{ report.min_time }}</template>
-            <template v-slot:test-time-avg>{{ report.avg_time }}</template>
-            <template v-slot:test-time-total>{{ report.testing_time }}</template>
-          </ReportCard>
-        </div>
-        -->
-        <div v-for="r in reports" :key="r" class="col mb-4">
-          <ReportCard>
-            <template v-slot:title>{{ r }}</template>
+            <template v-slot:title>{{ r.function_type }}</template>
+            <template v-slot:test-sample-num>{{ r.testing_sample_num }}</template>
+            <template v-slot:total-sample-num>{{ r.total_sample_num }}</template>
+            <template v-slot:test-time-max>{{ r.max_time }}</template>
+            <template v-slot:test-time-min>{{ r.min_time }}</template>
+            <template v-slot:test-time-avg>{{ r.avg_time }}</template>
+            <template v-slot:test-time-total>{{ r.testing_time }}</template>
           </ReportCard>
         </div>
       </div>
