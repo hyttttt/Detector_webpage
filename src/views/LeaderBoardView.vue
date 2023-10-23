@@ -2,6 +2,7 @@
 import BasePage from '../components/BasePage.vue'
 import { ref } from 'vue'
 
+// list of leaders
 const leader_list = ref([])
 
 function refresh_leader() {
@@ -16,10 +17,26 @@ function refresh_leader() {
 }
 refresh_leader()
 
+// list of samples
 const sample_list = ref([])
-for (let i = 0; i < 50; i++) {
-  sample_list.value.push({ name: i.toString(), select: false, class: 'dropdown-item' })
-}
+
+fetch('http://140.118.155.18:8000/api/dataset', {
+  method: 'GET',
+  credentials: 'include'
+})
+  .then((response) => {
+    return response.json()
+  })
+  .then((response) => {
+    for (var i = 0; i < response.length; i++) {
+      sample_list.value.push({
+        name: response[i].dataset_name,
+        select: false,
+        class: 'dropdown-item'
+      })
+    }
+  })
+  .catch((error) => console.error(error))
 
 function select_sample(name) {
   for (let i = 0; i < sample_list.value.length; i++) {
@@ -35,7 +52,7 @@ function select_sample(name) {
   refresh_leader()
 }
 
-select_sample('25')
+select_sample(sample_list[0].name)
 </script>
 
 <template>
