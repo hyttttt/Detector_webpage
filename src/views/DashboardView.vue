@@ -26,7 +26,7 @@ const detectors = ref([
 
 fetch('/api/detector', {
   method: 'GET',
-  headers: { Authorization: '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' }
+  credentials: "include"
 })
   .then((response) => {
     return response.json()
@@ -46,7 +46,7 @@ fetch('/api/detector', {
 const reports = ref([{ report_id: 'test_rid' }])
 fetch('/api/report', {
   method: 'GET',
-  headers: { Authorization: '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' }
+  credentials: "include"
 })
   .then((response) => {
     return response.json()

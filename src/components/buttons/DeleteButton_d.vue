@@ -13,7 +13,7 @@ function removeDetector() {
 
   fetch(`/api/detector/${props.did}`, {
     method: 'DELETE',
-    headers: { Authorization: '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' }
+    credentials: "include"
   })
     .then((response) => {
       router.push(`/dash`)
