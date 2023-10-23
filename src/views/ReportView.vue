@@ -15,7 +15,7 @@ ids = ids.split(',')
 const reports = ref([])
 
 for (let id of ids) {
-  fetch(`http://140.118.155.18:8000//api/report/${id}`, { method: 'GET', credentials: 'include' })
+  fetch(`http://140.118.155.18:8000/api/report/${id}`, { method: 'GET', credentials: 'include' })
     .then((response) => {
       return response.json()
     })
