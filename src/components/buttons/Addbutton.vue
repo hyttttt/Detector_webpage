@@ -13,7 +13,7 @@ function addDetector() {
   var formData = new FormData()
   formData.append('file', fileInput.value.files[0])
 
-  fetch(this.APIUrl + '/api/detector', {
+  fetch('/api/detector', {
     method: 'POST',
     body: formData,
     credentials: "include"
