@@ -11,7 +11,7 @@ const props = defineProps({
 function removeDetector() {
   router.push('/loading/dash')
 
-  fetch(`/api/detector/${props.did}`, {
+  fetch(`http://140.118.155.18:8000/api/detector/${props.did}`, {
     method: 'DELETE',
     credentials: "include"
   })

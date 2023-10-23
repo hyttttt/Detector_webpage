@@ -24,7 +24,7 @@ const detectors = ref([
   { detector_id: 'test_did', detector_name: 'test_dname', file_id: 'test_fid' }
 ])
 
-fetch('/api/detector', {
+fetch('http://140.118.155.18:8000/api/detector', {
   method: 'GET',
   credentials: "include"
 })
@@ -44,7 +44,7 @@ fetch('/api/detector', {
 
 // get report list
 const reports = ref([{ report_id: 'test_rid' }])
-fetch('/api/report', {
+fetch('http://140.118.155.18:8000/api/report', {
   method: 'GET',
   credentials: "include"
 })

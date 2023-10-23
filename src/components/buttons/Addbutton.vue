@@ -13,7 +13,7 @@ function addDetector() {
   var formData = new FormData()
   formData.append('file', fileInput.value.files[0])
 
-  fetch('/api/detector', {
+  fetch('http://140.118.155.18:8000/api/detector', {
     method: 'POST',
     body: formData,
     credentials: "include"
