@@ -166,14 +166,14 @@ select_subject('accuracy')
                 <th @click="select_subject('accuracy')">Accuracy</th>
                 <td v-for="r in accuracy" :key="r">{{ r }}</td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <th @click="select_subject('fp')">FP</th>
                 <td v-for="r in fp" :key="r">{{ r }}</td>
               </tr>
               <tr>
                 <th @click="select_subject('fn')">FN</th>
                 <td v-for="r in fn" :key="r">{{ r }}</td>
-              </tr>
+              </tr> -->
               <tr>
                 <th @click="select_subject('precision')">Precision</th>
                 <td v-for="r in precision" :key="r">{{ r }}</td>

@@ -30,7 +30,7 @@ const props = defineProps({
             <template v-slot:title>Accuracy</template>
           </ReportDoughnut>
         </div>
-        <div class="col">
+        <!-- <div class="col">
           <ReportDoughnut :num="fp">
             <template v-slot:title>False positive</template>
           </ReportDoughnut>
@@ -39,7 +39,7 @@ const props = defineProps({
           <ReportDoughnut :num="fn">
             <template v-slot:title>False negative</template>
           </ReportDoughnut>
-        </div>
+        </div> -->
         <div class="col">
           <ReportDoughnut :num="precision">
             <template v-slot:title>Precision</template>
@@ -62,10 +62,10 @@ const props = defineProps({
       <p>
         <strong><br />Testing time:</strong>
       </p>
-      <p>Max: <slot name="test-time-max"></slot> ms</p>
-      <p>Min: <slot name="test-time-min"></slot> ms</p>
-      <p>Average: <slot name="test-time-avg"></slot> ms</p>
-      <p>Total: <slot name="test-time-total"></slot> ms</p>
+      <p>Max: <slot name="test-time-max"></slot> s</p>
+      <p>Min: <slot name="test-time-min"></slot> s</p>
+      <p>Average: <slot name="test-time-avg"></slot> s</p>
+      <p>Total: <slot name="test-time-total"></slot> s</p>
       <!-- testing time end -->
     </div>
   </div>
