@@ -147,9 +147,9 @@ fetch('http://140.118.155.18:8000/api/report', {
                   <div class="col-2 text-right">
                     <TestButton :did="d.detector_id" />
                   </div>
-                  <div class="col-2 text-right">
+                  <!-- <div class="col-2 text-right">
                     <UpdateButton :did="d.detector_id" />
-                  </div>
+                  </div> -->
                   <div class="col-2 text-right">
                     <DeleteButton_d :did="d.detector_id" />
                   </div>
@@ -181,7 +181,7 @@ fetch('http://140.118.155.18:8000/api/report', {
                     <a>Report {{ r.report_id }}</a>
                   </div>
                   <div class="col-2 text-right"><ViewReportButton :rid="r.report_id" /></div>
-                  <div class="col-2 text-right"><DeleteButton_r :rid="r.report_id" /></div>
+                  <!-- <div class="col-2 text-right"><DeleteButton_r :rid="r.report_id" /></div> -->
                 </div>
               </li>
             </ul>

@@ -38,7 +38,7 @@ function testPage() {
     <div class="row" id="decorator"></div>
     <div class="row side-link"><a @click="aboutPage" class="link">About</a></div>
     <div class="row side-link"><a @click="dashboardPage" class="link">Dashboard</a></div>
-    <div class="row side-link"><a @click="profilePage" class="link">Profile</a></div>
+    <!-- <div class="row side-link"><a @click="profilePage" class="link">Profile</a></div> -->
     <div class="row side-link"><a @click="comparingPage" class="link">Comparing</a></div>
     <div class="row side-link"><a @click="leaderboardPage" class="link">Leaderboard</a></div>
   </div>

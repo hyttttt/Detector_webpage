@@ -54,8 +54,8 @@ fetch('http://140.118.155.18:8000/api/report', {
                 <th scope="col" class="text-center">Select</th>
                 <th scope="col" class="text-center">#</th>
                 <th scope="col">Report ID</th>
-                <th scope="col">Detector</th>
-                <th scope="col">Start time</th>
+                <!-- <th scope="col">Detector</th>
+                <th scope="col">Start time</th> -->
               </tr>
             </thead>
             <tbody>
@@ -63,8 +63,8 @@ fetch('http://140.118.155.18:8000/api/report', {
                 <td class="text-center"><input type="checkbox" v-model="r.check" /></td>
                 <th class="text-center" scope="row">{{ r.num }}</th>
                 <td>{{ r.report_id }}</td>
-                <td>detector</td>
-                <td>time</td>
+                <!-- <td>detector</td>
+                <td>time</td> -->
               </tr>
             </tbody>
           </table>
