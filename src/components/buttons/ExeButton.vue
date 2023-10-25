@@ -9,6 +9,24 @@ const props = defineProps({
   funcs: Object
 })
 
+function checkExeDone(ids) {
+  var done = false
+
+  while (!done) {
+    fetch(`http://140.118.155.18:8000/api/report/${ids[0]}`, {
+      method: 'GET',
+      credentials: 'include'
+    })
+      .then((response) => {
+        done = true
+      })
+      .catch((error) => console.error(error))
+  }
+
+  // jump to report page
+  router.push(`/report/${ids.join(',')}`)
+}
+
 function execute() {
   // jump to loading page
   router.push('/loading/task')
@@ -22,6 +40,7 @@ function execute() {
   // post task
   var request = { detector_id: props.did, function_type: funcs }
   var result = []
+
   fetch('http://140.118.155.18:8000/api/task', {
     method: 'POST',
     credentials: 'include',
@@ -38,8 +57,7 @@ function execute() {
         result.push(response[i].report_id)
       }
 
-      // jump to report page
-      router.push(`/report/${result.join(',')}`)
+      checkExeDone(result)
     })
     .catch((error) => console.error(error))
 }
