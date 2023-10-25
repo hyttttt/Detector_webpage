@@ -9,16 +9,16 @@ const props = defineProps({
   funcs: Object
 })
 
+// check if analysis done every 10 sec
 function checkExeDone(ids) {
-  // check if analysis done every 10 sec
   setInterval(function () {
     fetch(`http://140.118.155.18:8000/api/report/${ids[0]}`, {
       method: 'GET',
       credentials: 'include'
     })
+      .then((response) => response.json())
       .then((response) => {
-        // jump to report page
-        router.push(`/report/${ids.join(',')}`)
+        if (response != null) router.push(`/report/${ids.join(',')}`) // jump to report page
       })
       .catch((error) => console.error(error))
   }, 10000)
