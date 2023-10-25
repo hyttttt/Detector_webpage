@@ -37,12 +37,12 @@ const props = defineProps({
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"></ul>
-        <a href="/"><img src="../assets/user.png" class="icons" /></a>
+        <!-- <a href="/"><img src="../assets/user.png" class="icons" /></a>
         <a>&nbsp;&nbsp;</a>
         <a href="/"><img src="../assets/settings.png" class="icons" /></a>
         <a>&nbsp;&nbsp;</a>
         <a href="/"><img src="../assets/bell.png" class="icons" /></a>
-        <a>&nbsp;&nbsp;&nbsp;</a>
+        <a>&nbsp;&nbsp;&nbsp;</a> -->
 
         <p v-if="isLogIn"><LogOutButton /></p>
         <p v-else><LogInButton /></p>

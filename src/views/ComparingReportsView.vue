@@ -15,8 +15,8 @@ ids = ids.split(',')
 const report_id = ref([])
 const function_type = ref([])
 const accuracy = ref([])
-const fp = ref([])
-const fn = ref([])
+// const fp = ref([])
+// const fn = ref([])
 const precision = ref([])
 const recall = ref([])
 const f1 = ref([])
@@ -82,8 +82,8 @@ function select_subject(name) {
     var value = 0
 
     if (name == 'accuracy') value = accuracy.value[i]
-    else if (name == 'fp') value = fp.value[i]
-    else if (name == 'fn') value = fn.value[i]
+    // else if (name == 'fp') value = fp.value[i]
+    // else if (name == 'fn') value = fn.value[i]
     else if (name == 'precision') value = precision.value[i]
     else if (name == 'recall') value = recall.value[i]
     else if (name == 'f1') value = f1.value[i]

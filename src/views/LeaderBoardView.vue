@@ -52,7 +52,7 @@ function select_sample(name) {
   refresh_leader()
 }
 
-select_sample(sample_list[0].name)
+select_sample(sample_list.value[0].name)
 </script>
 
 <template>
