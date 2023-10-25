@@ -41,7 +41,7 @@ console.log(reports.value)
             :fn="r.false_negative"
             :precision="r.precision"
             :recall="r.recall"
-            :f1="r.f1_score"
+            :f1="r.f1"
           >
             <template v-slot:title>{{ r.function_type }}</template>
             <template v-slot:test-sample-num>{{ r.testing_sample_num }}</template>
