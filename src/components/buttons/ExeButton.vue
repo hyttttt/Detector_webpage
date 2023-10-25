@@ -13,14 +13,23 @@ function checkExeDone(ids) {
   var done = false
 
   while (!done) {
-    fetch(`http://140.118.155.18:8000/api/report/${ids[0]}`, {
-      method: 'GET',
-      credentials: 'include'
-    })
-      .then((response) => {
-        done = true
+    var time = 0
+
+    // wait for 10 sec
+    setTimeout(function () {
+      // check if report is generated
+      fetch(`http://140.118.155.18:8000/api/report/${ids[0]}`, {
+        method: 'GET',
+        credentials: 'include'
       })
-      .catch((error) => console.error(error))
+        .then((response) => {
+          done = true
+        })
+        .catch((error) => console.error(error))
+
+      time += 10
+      console.log(time + 'sec')
+    }, 10000)
   }
 
   // jump to report page
