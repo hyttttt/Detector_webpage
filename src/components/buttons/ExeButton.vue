@@ -10,30 +10,18 @@ const props = defineProps({
 })
 
 function checkExeDone(ids) {
-  var done = false
-
-  while (!done) {
-    var time = 0
-
-    // wait for 10 sec
-    setTimeout(function () {
-      // check if report is generated
-      fetch(`http://140.118.155.18:8000/api/report/${ids[0]}`, {
-        method: 'GET',
-        credentials: 'include'
+  // check if analysis done every 10 sec
+  setInterval(function () {
+    fetch(`http://140.118.155.18:8000/api/report/${ids[0]}`, {
+      method: 'GET',
+      credentials: 'include'
+    })
+      .then((response) => {
+        // jump to report page
+        router.push(`/report/${ids.join(',')}`)
       })
-        .then((response) => {
-          done = true
-        })
-        .catch((error) => console.error(error))
-
-      time += 10
-      console.log(time + 'sec')
-    }, 10000)
-  }
-
-  // jump to report page
-  router.push(`/report/${ids.join(',')}`)
+      .catch((error) => console.error(error))
+  }, 10000)
 }
 
 function execute() {
