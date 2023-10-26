@@ -2,18 +2,37 @@
 import BasePage from '../components/BasePage.vue'
 import { ref } from 'vue'
 
+const isLogIn = ref(true)
+
 // list of leaders
 const leader_list = ref([])
 
-function refresh_leader() {
+function refresh_leader(dataset) {
   leader_list.value = []
-  for (let i = 1; i < 51; i++) {
-    leader_list.value.push({
-      rank: i,
-      uid: Math.floor(Math.random() * 10000).toString(),
-      score: 51 - i
+
+  fetch(`http://140.118.155.18:8000/api/leaderboard/${dataset}`, {
+    method: 'GET',
+    credentials: 'include'
+  })
+    .then((response) => {
+      return response.json()
     })
-  }
+    .then((response) => {
+      for (var i = 0; i < response.length; i++) {
+        leader_list.value.push({
+          rank: i + 1,
+          uid: response[i].user_id,
+          uname: response[i].user_name,
+          score: response[i].accuracy
+        })
+      }
+
+      console.log('response')
+      console.log(response)
+      console.log('leader_list')
+      console.log(leader_list)
+    })
+    .catch((error) => console.error(error))
 }
 refresh_leader()
 
@@ -55,12 +74,12 @@ function select_sample(name) {
     }
   }
 
-  refresh_leader()
+  refresh_leader(name)
 }
 </script>
 
 <template>
-  <BasePage>
+  <BasePage :isLogIn="isLogIn">
     <template v-slot:title>Leaderboard</template>
     <template v-slot:content>
       <!-- Select sample button start -->
@@ -119,7 +138,7 @@ function select_sample(name) {
                 <li class="list-group-item" v-for="l in leader_list" :key="l.uid">
                   <div class="row">
                     <div class="col">{{ l.rank }}</div>
-                    <div class="col">{{ l.uid }}</div>
+                    <div class="col">{{ l.uname }}</div>
                     <div class="col">{{ l.score }}</div>
                   </div>
                 </li>
