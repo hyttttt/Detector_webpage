@@ -77,7 +77,7 @@ fetch('http://140.118.155.18:8000/api/report', {
     <template v-slot:title>Dashboard</template>
     <template v-slot:content>
       <!-- Statistic cards row start -->
-      <div class="row" id="row-statistic">
+      <!-- <div class="row" id="row-statistic">
         <div class="col">
           <StatisticCard>
             <template v-slot:title>Dectector number</template>
@@ -118,7 +118,7 @@ fetch('http://140.118.155.18:8000/api/report', {
             </template>
           </StatisticCard>
         </div>
-      </div>
+      </div> -->
       <!-- Statistic cards row end -->
 
       <div class="row">
