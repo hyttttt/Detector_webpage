@@ -19,6 +19,7 @@ refresh_leader()
 
 // list of samples
 const sample_list = ref([])
+const empty = ref(true)
 
 fetch('http://140.118.155.18:8000/api/dataset', {
   method: 'GET',
@@ -52,7 +53,10 @@ function select_sample(name) {
   refresh_leader()
 }
 
-select_sample(sample_list.value[0].name)
+if (sample_list.value.length != 0) {
+  select_sample(sample_list.value[0].name)
+  empty.value = false
+}
 </script>
 
 <template>
@@ -63,6 +67,17 @@ select_sample(sample_list.value[0].name)
       <div class="row container-fluid" id="btn-row">
         <div class="btn-group dropright">
           <button
+            v-if="empty"
+            type="button"
+            class="btn dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Sample None&nbsp
+          </button>
+          <button
+            v-else
             type="button"
             class="btn dropdown-toggle"
             data-toggle="dropdown"
@@ -90,7 +105,7 @@ select_sample(sample_list.value[0].name)
           <div class="card">
             <div class="card-header">
               <h5>Top 50</h5>
-              <h6 class="text-muted">Sort by average of metrics</h6>
+              <h6 class="text-muted">Sort by accuracy</h6>
             </div>
             <div class="leader-list">
               <ul class="list-group">
@@ -116,7 +131,7 @@ select_sample(sample_list.value[0].name)
 
         <!-- Testing time ranking start -->
         <div class="col">
-          <div class="card">
+          <!-- <div class="card">
             <div class="card-header">
               <h5>Top 50</h5>
               <h6 class="text-muted">Sort by total testing time</h6>
@@ -139,13 +154,13 @@ select_sample(sample_list.value[0].name)
                 </li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- Testing time ranking end -->
 
         <!-- Record start -->
-        <div class="col">
-          <h4 style="color: white">Your record</h4>
+        <!--<div class="col">
+           <h4 style="color: white">Your record</h4>
           <div class="row">
             <div class="col record-card">
               <div class="card" id="best-avg-card">
@@ -188,8 +203,8 @@ select_sample(sample_list.value[0].name)
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </div> 
+        </div>-->
         <!-- Record end -->
       </div>
     </template>
