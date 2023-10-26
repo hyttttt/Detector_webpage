@@ -18,7 +18,10 @@ function refresh_leader(dataset) {
       return response.json()
     })
     .then((response) => {
-      for (var i = 0; i < response.length; i++) {
+      var max = 50
+      if (response.length < max) max = response.length
+
+      for (var i = 0; i < max; i++) {
         leader_list.value.push({
           rank: i + 1,
           uid: response[i].user_id,
@@ -26,11 +29,6 @@ function refresh_leader(dataset) {
           score: response[i].accuracy
         })
       }
-
-      console.log('response')
-      console.log(response)
-      console.log('leader_list')
-      console.log(leader_list)
     })
     .catch((error) => console.error(error))
 }
