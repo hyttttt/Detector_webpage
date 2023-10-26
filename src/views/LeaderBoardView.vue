@@ -65,9 +65,8 @@ if (sample_list.value.length != 0) {
     <template v-slot:content>
       <!-- Select sample button start -->
       <div class="row container-fluid" id="btn-row">
-        <div class="btn-group dropright">
+        <div v-if="empty" class="btn-group dropright">
           <button
-            v-if="empty"
             type="button"
             class="btn dropdown-toggle"
             data-toggle="dropdown"
@@ -76,8 +75,9 @@ if (sample_list.value.length != 0) {
           >
             Sample None&nbsp
           </button>
+        </div>
+        <div v-else class="btn-group dropright">
           <button
-            v-else
             type="button"
             class="btn dropdown-toggle"
             data-toggle="dropdown"
