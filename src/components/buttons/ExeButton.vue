@@ -59,7 +59,8 @@ function execute() {
       for (var i = 0; i < response.length; i++) {
         result.push(response[i].report_id)
       }
-
+      console.log('report id')
+      console.log(result)
       checkExeDone(result)
     })
     .catch((error) => console.error(error))
