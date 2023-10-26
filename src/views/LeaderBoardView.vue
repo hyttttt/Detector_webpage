@@ -37,8 +37,10 @@ fetch('http://140.118.155.18:8000/api/dataset', {
       })
     }
 
-    console.log('sample list')
-    console.log(sample_list.value)
+    if (sample_list.value.length != 0) {
+      select_sample(sample_list.value[0].name)
+      empty.value = false
+    }
   })
   .catch((error) => console.error(error))
 
@@ -54,14 +56,6 @@ function select_sample(name) {
   }
 
   refresh_leader()
-}
-
-if (sample_list.value.length != 0) {
-  select_sample(sample_list.value[0].name)
-  empty.value = false
-  console.log('not empty')
-} else {
-  console.log('empty')
 }
 </script>
 
