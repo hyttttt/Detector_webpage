@@ -57,6 +57,8 @@ const bar_height = ref(300)
 const bar_width = ref(50)
 const bar_gap = ref(20)
 const bar_caption = ref([])
+const bar_caption_x = ref(0)
+const bar_caption_name = ref('')
 const bar_empty = ref(true)
 
 // choose the color of bar
@@ -140,6 +142,9 @@ function select_subject(name) {
 
       y += 40
     }
+
+    if (bar_caption.value.length != 0) bar_caption_x.value = bar_caption.value[0].x
+    if (bar_data.value.length != 0) bar_caption_name.value = bar_data.value[0].name
 
     window.scrollTo(0, document.body.scrollHeight)
   }
@@ -226,6 +231,8 @@ select_subject('accuracy')
             :bar_height="bar_height"
             :bar_width="bar_width"
             :bar_caption="bar_caption"
+            :bar_caption_x="bar_caption_x"
+            :bar_caption_name="bar_caption_name"
             :bar_empty="bar_empty"
           ></BarChart>
           <!-- chart end -->
