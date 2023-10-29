@@ -99,8 +99,8 @@ function select_subject(name) {
     temp.push({ id: id, value: value, name: name })
   }
 
-  // tranform value into bar chart position and size
-
+  /* tranform value into bar chart position and size */
+  // get the max data value
   var x = 0
   var max = 0
   for (let i = 0; i < temp.length; i++) {
@@ -108,7 +108,10 @@ function select_subject(name) {
   }
 
   for (let i = 0; i < temp.length; i++) {
-    var h = (temp[i].value / max) * bar_height.value * 0.9
+    var h
+    if (max == 0) h = 0
+    else if (temp[i].value < 0) h = 0
+    else h = (temp[i].value / max) * bar_height.value * 0.9
 
     bar_data.value.push({
       id: temp[i].id,
