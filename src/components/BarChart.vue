@@ -25,13 +25,15 @@ const props = defineProps({
                           ...
                         ] */,
   bar_height: Number,
-  bar_width: Number
+  bar_width: Number,
+  bar_empty: Boolean
 })
 </script>
 
 <template>
   <div id="barchart">
-    <svg width="100%" :height="bar_height">
+    <p v-if="bar_empty">no data</p>
+    <svg v-else width="100%" :height="bar_height">
       <rect
         v-for="i in bar_data"
         :key="i.id"

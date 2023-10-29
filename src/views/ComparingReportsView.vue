@@ -57,6 +57,7 @@ const bar_height = ref(300)
 const bar_width = ref(50)
 const bar_gap = ref(20)
 const bar_caption = ref([])
+const bar_empty = ref(true)
 
 // choose the color of bar
 function color_map(i) {
@@ -98,45 +99,50 @@ function select_subject(name) {
   }
 
   // tranform value into bar chart position and size
-  var x = 0
-  var max = 0
-  for (let i = 0; i < temp.length; i++) {
-    if (max < temp[i].value) max = temp[i].value
+  if ((report_id.value.length = 0)) {
+    bar_empty.value = true
+  } else {
+    bar_empty.value = false
+    var x = 0
+    var max = 0
+    for (let i = 0; i < temp.length; i++) {
+      if (max < temp[i].value) max = temp[i].value
+    }
+
+    for (let i = 0; i < temp.length; i++) {
+      var h = (temp[i].value / max) * bar_height.value * 0.9
+
+      bar_data.value.push({
+        id: temp[i].id,
+        value: temp[i].value,
+        name: temp[i].name,
+        x: x,
+        y: bar_height.value - h,
+        width: bar_width.value,
+        height: h,
+        fill: color_map(i)
+      })
+
+      x += bar_width.value + bar_gap.value
+    }
+
+    // make caption of bar chart
+    var y = 40
+    for (let i = 0; i < bar_data.value.length; i++) {
+      bar_caption.value.push({
+        id: bar_data.value[i].id,
+        x: x + 50,
+        y: y,
+        width: 20,
+        height: 20,
+        fill: bar_data.value[i].fill
+      })
+
+      y += 40
+    }
+
+    window.scrollTo(0, document.body.scrollHeight)
   }
-
-  for (let i = 0; i < temp.length; i++) {
-    var h = (temp[i].value / max) * bar_height.value * 0.9
-
-    bar_data.value.push({
-      id: temp[i].id,
-      value: temp[i].value,
-      name: temp[i].name,
-      x: x,
-      y: bar_height.value - h,
-      width: bar_width.value,
-      height: h,
-      fill: color_map(i)
-    })
-
-    x += bar_width.value + bar_gap.value
-  }
-
-  // make caption of bar chart
-  var y = 40
-  for (let i = 0; i < bar_data.value.length; i++) {
-    bar_caption.value.push({
-      id: bar_data.value[i].id,
-      x: x + 50,
-      y: y,
-      width: 20,
-      height: 20,
-      fill: bar_data.value[i].fill
-    })
-
-    y += 40
-  }
-
-  window.scrollTo(0, document.body.scrollHeight)
 }
 
 // default bar chart is accuracy
@@ -220,6 +226,7 @@ select_subject('accuracy')
             :bar_height="bar_height"
             :bar_width="bar_width"
             :bar_caption="bar_caption"
+            :bar_empty="bar_empty"
           ></BarChart>
           <!-- chart end -->
         </div>
