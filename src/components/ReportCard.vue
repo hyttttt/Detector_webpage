@@ -21,7 +21,7 @@ const props = defineProps({
     <h5 class="card-header"><slot name="title"></slot></h5>
     <div class="card-body">
       <p><strong>Testing Sample Number: </strong><slot name="test-sample-num"></slot></p>
-      <p><strong>Total Sample Number: </strong><slot name="test-sample-num"></slot></p>
+      <p><strong>Total Sample Number: </strong><slot name="total-sample-num"></slot></p>
 
       <!-- charts start -->
       <div class="row">
