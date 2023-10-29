@@ -14,14 +14,19 @@ function checkExeDone(ids) {
   var time = 0
   console.log('check')
 
-  setInterval(function () {
+  var interval = setInterval(function () {
     fetch(`http://140.118.155.18:8000/api/report/${ids[0]}`, {
       method: 'GET',
       credentials: 'include'
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response != null) router.push(`/report/${ids.join(',')}`) // jump to report page
+        if (response != null) {
+          router.push(`/report/${ids.join(',')}`) // jump to report page
+          clearInterval(interval)
+          console.log('get report, clear interval')
+          return
+        }
       })
       .catch((error) => console.error(error))
 
