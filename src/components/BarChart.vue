@@ -2,8 +2,6 @@
 <!-- props data in and it will draw the chart automatically-->
 
 <script setup>
-import { ref } from 'vue'
-
 const props = defineProps({
   bar_data: Object /*[{ id: String,
                         value: Number,
@@ -29,22 +27,14 @@ const props = defineProps({
   bar_caption_x: Number,
   bar_caption_name: String,
   bar_height: Number,
-  bar_width: Number,
-  bar_empty: Boolean
+  bar_width: Number
 })
-
-/*const caption_x = ref('')
-const caption_name = ref('')
-if (props.bar_caption.value.length != 0 && props.bar_data.value.length != 0) {
-  caption_x.value = props.bar_caption.value[0].x
-  caption_name.value = props.bar_data[0].name
-}*/
 </script>
 
 <template>
   <div id="barchart">
-    <p v-if="bar_empty">no data</p>
-    <svg v-else width="100%" :height="bar_height">
+    <svg width="100%" :height="bar_height">
+      <!-- bar chart start -->
       <rect
         v-for="i in bar_data"
         :key="i.id"
@@ -55,6 +45,8 @@ if (props.bar_caption.value.length != 0 && props.bar_data.value.length != 0) {
         :fill="i.fill"
       />
       <text v-for="i in bar_data" :key="i.id" :x="i.x" :y="i.y">{{ i.value }}</text>
+      <!-- bar chart end -->
+      <!-- bar chart caption start -->
       <rect
         v-for="i in bar_caption"
         :key="i.id"
@@ -68,6 +60,7 @@ if (props.bar_caption.value.length != 0 && props.bar_data.value.length != 0) {
       <text v-for="i in bar_caption" :x="i.x + i.width + 10" :y="i.y + i.height - 5">
         {{ i.id }}
       </text>
+      <!-- bar chart caption end -->
     </svg>
   </div>
 </template>
