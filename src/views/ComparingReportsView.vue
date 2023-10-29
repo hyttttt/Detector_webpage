@@ -109,8 +109,8 @@ function select_subject(name) {
 
   for (let i = 0; i < temp.length; i++) {
     var h
-    if (max == 0) h = 0
-    else if (temp[i].value < 0) h = 0
+    if (max == 0) h = 10
+    else if (temp[i].value < 0) h = 10
     else h = (temp[i].value / max) * bar_height.value * 0.9
 
     bar_data.value.push({
