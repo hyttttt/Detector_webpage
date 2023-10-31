@@ -21,10 +21,19 @@ function checkExeDone(ids) {
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response != null) {
+        // run task succeed
+        if (response != null && response.accuracy != -1) {
           router.push(`/report/${ids.join(',')}`) // jump to report page
           clearInterval(interval)
           console.log('get report, clear interval')
+          return
+        }
+        // run task fail
+        else if (response.accuracy == -1) {
+          router.push(`/report/fail`)
+          clearInterval(interval)
+          console.log('get report, clear interval')
+          console.log('report fail')
           return
         }
       })

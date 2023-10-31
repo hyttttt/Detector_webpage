@@ -5,35 +5,44 @@ import { useRoute } from 'vue-router'
 import { ref } from 'vue'
 
 const isLogIn = ref(true)
+const report_fail = ref(false)
+const reports = ref([])
 
 // get report ids from url
 const route = useRoute()
 var ids = route.params.ids
 ids = ids.split(',')
 
-// get report
-const reports = ref([])
-
-for (let id of ids) {
-  fetch(`http://140.118.155.18:8000/api/report/${id}`, { method: 'GET', credentials: 'include' })
-    .then((response) => {
-      return response.json()
-    })
-    .then((response) => {
-      reports.value.push(response)
-    })
-    .catch((error) => console.error(error))
+// show fail report
+if (ids[0] == 'fail') {
+  report_fail.value = true
 }
-
-console.log('reports')
-console.log(reports.value)
+// get report
+else {
+  for (let id of ids) {
+    fetch(`http://140.118.155.18:8000/api/report/${id}`, { method: 'GET', credentials: 'include' })
+      .then((response) => {
+        return response.json()
+      })
+      .then((response) => {
+        reports.value.push(response)
+      })
+      .catch((error) => console.error(error))
+  }
+}
 </script>
 
 <template>
   <BasePage :isLogIn="isLogIn">
     <template v-slot:title>Report</template>
     <template v-slot:content>
-      <div class="row row-cols-1 row-cols-md-1">
+      <div v-if="report_fail" class="row row-cols-1 row-cols-md-1">
+        <div class="card">
+          <div class="card-header"><h5>Error</h5></div>
+          <div class="card-body">fail to generate report</div>
+        </div>
+      </div>
+      <div v-else class="row row-cols-1 row-cols-md-1">
         <div v-for="r in reports" :key="r.report_id" class="col mb-4">
           <ReportCard
             :acc="r.accuracy"
