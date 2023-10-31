@@ -15,7 +15,6 @@ function GitHubLogin() {
   const redirect_uri = 'http://140.118.155.18:8000/auth/callback'
   const scope = 'read:user,repo'
   location.href = `https://github.com/login/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&scope=${scope}`
-  //location.href = '/auth/callback'
 }
 </script>
 
@@ -65,19 +64,11 @@ function GitHubLogin() {
               <img src="../assets/github.png" class="icons" @click="GitHubLogin" />
             </div>
             <br />
-            <div class="text-center">
-              <ul class="list-inline">
-                <li class="list-inline-item text-muted">Don't have an account?</li>
-                <li class="list-inline-item">
-                  <a
-                    href="https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home"
-                    >Sign up
-                  </a>
-                </li>
-              </ul>
-            </div>
             <div class="card-subtitle text-center text-muted">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              <p>
+                Detect, Analyze, Succeed <br />
+                Precisely evaluate your malware detector
+              </p>
             </div>
           </div>
         </div>

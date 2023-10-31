@@ -5,13 +5,14 @@
     <div class="row" id="bg">
       <div class="col"></div>
       <div class="col-8 text-center" id="welcome-text">
-        <h1 style="font-weight: bold">Welcome</h1>
+        <h2 style="font-weight: bold">Welcome to</h2>
+        <h1 style="font-weight: bold">Malware Detector Evaluation Platform</h1>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-          been the industry's standard dummy text ever since the 1500s, when an unknown printer took
-          a galley of type and scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting, remaining essentially
-          unchanged.
+          MDEP, Malware Detector Evaluation Platform, a cutting-edge malware detection evaluation
+          platform. Upload your own detectors and measure their performance against predefined
+          datasets, generating detailed reports with key metrics. Stay ahead of cybersecurity
+          challenges with our precise evaluation.<br />
+          Let's get started!
         </p>
       </div>
       <div class="col"></div>
@@ -35,6 +36,6 @@
 
 #welcome-text {
   color: aliceblue;
-  margin: 5% 0%;
+  margin: 5% 0% 1% 0%;
 }
 </style>
