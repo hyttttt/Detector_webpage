@@ -50,7 +50,10 @@ else {
       <div v-if="report_fail" class="row row-cols-1 row-cols-md-1">
         <div class="card">
           <div class="card-header"><h5>Error</h5></div>
-          <div class="card-body">fail to generate report</div>
+          <div class="card-body">
+            fail to generate report<br />
+            get accuracy = -1
+          </div>
         </div>
       </div>
       <div v-else class="row row-cols-1 row-cols-md-1">

@@ -11,14 +11,14 @@ const props = defineProps({
 function removeReport() {
   router.push('/loading/dash')
 
-  /*fetch(`http://140.118.155.18:8000/api/report/${props.rid}`, {
+  fetch(`http://140.118.155.18:8000/api/report/${props.rid}`, {
     method: 'DELETE',
     credentials: 'include'
   })
     .then((response) => {
       router.push(`/dash`)
     })
-    .catch((error) => console.error(error))*/
+    .catch((error) => console.error(error))
 }
 </script>
 
