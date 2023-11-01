@@ -25,32 +25,21 @@ else {
         return response.json()
       })
       .then((response) => {
-        reports.value.push(response)
+        // fix decimal to 6 digit
+        var r = response
+        r.accuracy = r.accuracy.toFixed(6)
+        r.precision = r.precision.toFixed(6)
+        r.recall = r.recall.toFixed(6)
+        r.f1 = r.f1.toFixed(6)
+        r.avg_time = r.avg_time.toFixed(6)
+        r.min_time = r.min_time.toFixed(6)
+        r.max_time = r.max_time.toFixed(6)
+        r.testing_time = r.testing_time.toFixed(6)
+
+        reports.value.push(r)
       })
       .catch((error) => console.error(error))
   }
-
-  // fix decimal to 6 digit
-  for (var i = 0; i < reports.value.length; i++) {
-    reports.value[i].accuracy = reports.value[i].accuracy.toFixed(6)
-    reports.value[i].precision = reports.value[i].precision.toFixed(6)
-    reports.value[i].recall = reports.value[i].recall.toFixed(6)
-    reports.value[i].f1 = reports.value[i].f1.toFixed(6)
-    reports.value[i].avg_time = reports.value[i].avg_time.toFixed(6)
-    reports.value[i].min_time = reports.value[i].min_time.toFixed(6)
-    reports.value[i].max_time = reports.value[i].max_time.toFixed(6)
-    reports.value[i].testing_time = reports.value[i].testing_time.toFixed(6)
-  }
-
-  // test report data type
-  console.log('accuracy: ' + typeof reports.value[0].accuracy)
-  console.log('precision: ' + typeof reports.value[0].precision)
-  console.log('recall: ' + typeof reports.value[0].recall)
-  console.log('f1: ' + typeof reports.value[0].f1)
-  console.log('avg_time: ' + typeof reports.value[0].avg_time)
-  console.log('min_time: ' + typeof reports.value[0].min_time)
-  console.log('max_time: ' + typeof reports.value[0].max_time)
-  console.log('testing_time: ' + typeof reports.value[0].testing_time)
 }
 </script>
 
