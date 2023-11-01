@@ -29,6 +29,18 @@ else {
       })
       .catch((error) => console.error(error))
   }
+
+  // fix decimal to 6 digit
+  for (var i = 0; i < reports.value.length; i++) {
+    reports.value[i].accuracy = reports.value[i].accuracy.toFixed(6)
+    reports.value[i].precision = reports.value[i].precision.toFixed(6)
+    reports.value[i].recall = reports.value[i].recall.toFixed(6)
+    reports.value[i].f1 = reports.value[i].f1.toFixed(6)
+    reports.value[i].avg_time = reports.value[i].avg_time.toFixed(6)
+    reports.value[i].min_time = reports.value[i].min_time.toFixed(6)
+    reports.value[i].max_time = reports.value[i].max_time.toFixed(6)
+    reports.value[i].testing_time = reports.value[i].testing_time.toFixed(6)
+  }
 }
 </script>
 

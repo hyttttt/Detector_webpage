@@ -26,7 +26,7 @@ function refresh_leader(dataset) {
           rank: i + 1,
           uid: response[i].user_id,
           uname: response[i].user_name,
-          score: response[i].accuracy
+          score: response[i].accuracy.toFixed(6)
         })
       }
     })
