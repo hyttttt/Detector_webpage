@@ -27,14 +27,14 @@ else {
       .then((response) => {
         // fix decimal to 6 digit
         var r = response
-        r.accuracy = r.accuracy.toFixed(6)
-        r.precision = r.precision.toFixed(6)
-        r.recall = r.recall.toFixed(6)
-        r.f1 = r.f1.toFixed(6)
-        r.avg_time = r.avg_time.toFixed(6)
-        r.min_time = r.min_time.toFixed(6)
-        r.max_time = r.max_time.toFixed(6)
-        r.testing_time = r.testing_time.toFixed(6)
+        if (!Number.isInteger(r.accuracy)) r.accuracy = r.accuracy.toFixed(6)
+        if (!Number.isInteger(r.precision)) r.precision = r.precision.toFixed(6)
+        if (!Number.isInteger(r.recall)) r.recall = r.recall.toFixed(6)
+        if (!Number.isInteger(r.f1)) r.f1 = r.f1.toFixed(6)
+        if (!Number.isInteger(r.avg_time)) r.avg_time = r.avg_time.toFixed(6)
+        if (!Number.isInteger(r.min_time)) r.min_time = r.min_time.toFixed(6)
+        if (!Number.isInteger(r.max_time)) r.max_time = r.max_time.toFixed(6)
+        if (!Number.isInteger(r.testing_time)) r.testing_time = r.testing_time.toFixed(6)
 
         reports.value.push(r)
       })

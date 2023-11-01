@@ -35,16 +35,32 @@ for (let id of ids) {
     .then((response) => {
       report_id.value.push(response.report_id)
       function_type.value.push(response.function_type)
-      accuracy.value.push(response.accuracy.toFixed(6))
+      accuracy.value.push(
+        Number.isInteger(response.accuracy) ? response.accuracy : response.accuracy.toFixed(6)
+      )
       // fp.value.push(response.false_positive)
       // fn.value.push(response.false_negative)
-      precision.value.push(response.precision.toFixed(6))
-      recall.value.push(response.recall.toFixed(6))
-      f1.value.push(response.f1.toFixed(6))
-      avg_time.value.push(response.avg_time.toFixed(6))
-      min_time.value.push(response.min_time.toFixed(6))
-      max_time.value.push(response.max_time.toFixed(6))
-      testing_time.value.push(response.testing_time.toFixed(6))
+      precision.value.push(
+        Number.isInteger(response.precision) ? response.precision : response.precision.toFixed(6)
+      )
+      recall.value.push(
+        Number.isInteger(response.recall) ? response.recall : response.recall.toFixed(6)
+      )
+      f1.value.push(Number.isInteger(response.f1) ? response.f1 : response.f1.toFixed(6))
+      avg_time.value.push(
+        Number.isInteger(response.avg_time) ? response.avg_time : response.avg_time.toFixed(6)
+      )
+      min_time.value.push(
+        Number.isInteger(response.min_time) ? response.min_time : response.min_time.toFixed(6)
+      )
+      max_time.value.push(
+        Number.isInteger(response.max_time) ? response.max_time : response.max_time.toFixed(6)
+      )
+      testing_time.value.push(
+        Number.isInteger(response.testing_time)
+          ? response.testing_time
+          : response.testing_time.toFixed(6)
+      )
       testing_sample_num.value.push(response.testing_sample_num)
       total_sample_num.value.push(response.total_sample_num)
     })
