@@ -41,6 +41,16 @@ else {
     reports.value[i].max_time = reports.value[i].max_time.toFixed(6)
     reports.value[i].testing_time = reports.value[i].testing_time.toFixed(6)
   }
+
+  // test report data type
+  console.log('accuracy: ' + typeof reports.value[0].accuracy)
+  console.log('precision: ' + typeof reports.value[0].precision)
+  console.log('recall: ' + typeof reports.value[0].recall)
+  console.log('f1: ' + typeof reports.value[0].f1)
+  console.log('avg_time: ' + typeof reports.value[0].avg_time)
+  console.log('min_time: ' + typeof reports.value[0].min_time)
+  console.log('max_time: ' + typeof reports.value[0].max_time)
+  console.log('testing_time: ' + typeof reports.value[0].testing_time)
 }
 </script>
 
