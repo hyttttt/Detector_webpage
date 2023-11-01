@@ -51,8 +51,14 @@ else {
         <div class="card">
           <div class="card-header"><h5>Error</h5></div>
           <div class="card-body">
-            fail to generate report<br />
-            get accuracy = -1
+            <p>
+              fail to generate report<br />
+              get accuracy = -1
+            </p>
+            <div>
+              <a href="/dash" class="btn btn-primary" style="visibility: hidden">fake button</a>
+            </div>
+            <a href="/dash" class="btn btn-primary">Go back to Dashboard</a>
           </div>
         </div>
       </div>
