@@ -6,17 +6,7 @@ import { ref } from 'vue'
 const isLogIn = ref(true)
 
 // get report list
-//const reports = ref([])
-const reports = ref([
-  {
-    num: 0,
-    check: false,
-    report_id: '123456789',
-    function_type: 'OpcodeSeq_AE',
-    testing_datetime: ['2023-11-02', '13:20:00'],
-    detector_name: 'GraphTheoryDetector'
-  }
-])
+const reports = ref([])
 var num = 0
 
 fetch('http://140.118.155.18:8000/api/report', {
