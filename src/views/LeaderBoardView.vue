@@ -29,8 +29,11 @@ function refresh_leader(dataset) {
           score: Number.isInteger(response[i].accuracy)
             ? response[i].accuracy
             : response[i].accuracy.toFixed(6),
-          testing_datetime: response[i].testing_datetime,
-          detector_name: response[i].detector_name
+          testing_datetime: [
+            response[i].testing_datetime.split('T')[0],
+            response[i].testing_datetime.split('T')[1].split('Z')[0].split('.')[0]
+          ],
+          detector_name: response[i].detector_name.split('.')[0]
         })
       }
     })
@@ -132,19 +135,19 @@ function select_sample(name) {
               <ul class="list-group">
                 <li class="list-group-item">
                   <div class="row text-muted">
-                    <div class="col">Ranking</div>
-                    <div class="col">User</div>
-                    <div class="col">Detector</div>
-                    <div class="col">Testing Date</div>
+                    <div class="col-2">Ranking</div>
+                    <div class="col-2">User</div>
+                    <div class="col-2">Detector</div>
+                    <div class="col">Testing Date time</div>
                     <div class="col">Score</div>
                   </div>
                 </li>
                 <li class="list-group-item" v-for="l in leader_list" :key="l.uid">
                   <div class="row">
-                    <div class="col">{{ l.rank }}</div>
-                    <div class="col">{{ l.uname }}</div>
-                    <div class="col">{{ l.detector_name }}</div>
-                    <div class="col">{{ l.testing_datetime }}</div>
+                    <div class="col-2">{{ l.rank }}</div>
+                    <div class="col-2">{{ l.uname }}</div>
+                    <div class="col-2">{{ l.detector_name }}</div>
+                    <div class="col">{{ l.testing_datetime[0] + ' ' + l.testing_datetime[1] }}</div>
                     <div class="col">{{ l.score }}</div>
                   </div>
                 </li>

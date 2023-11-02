@@ -6,7 +6,17 @@ import { ref } from 'vue'
 const isLogIn = ref(true)
 
 // get report list
-const reports = ref([])
+//const reports = ref([])
+const reports = ref([
+  {
+    num: 0,
+    check: false,
+    report_id: '123456789',
+    function_type: 'OpcodeSeq_AE',
+    testing_datetime: ['2023-11-02', '13:20:00'],
+    detector_name: 'GraphTheoryDetector'
+  }
+])
 var num = 0
 
 fetch('http://140.118.155.18:8000/api/report', {
@@ -37,8 +47,11 @@ fetch('http://140.118.155.18:8000/api/report', {
         total_sample_num: r.total_sample_num,
         user_id: r.user_id,
         user_name: r.user_name,
-        testing_datetime: r.testing_datetime,
-        detector_name: r.detector_name
+        testing_datetime: [
+          r.testing_datetime.split('T')[0],
+          r.testing_datetime.split('T')[1].split('Z')[0].split('.')[0]
+        ],
+        detector_name: r.detector_name.split('.')[0]
       })
     })
   })
@@ -52,26 +65,26 @@ fetch('http://140.118.155.18:8000/api/report', {
       <div class="card" style="border-radius: 10px">
         <div class="card-body">
           <!-- table start -->
-          <table class="table table-bordered table-hover">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col" class="text-center">Select</th>
-                <th scope="col" class="text-center">#</th>
-                <th scope="col">Report</th>
-                <th scope="col">Detector</th>
-                <th scope="col">Testing date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="r in reports" :key="r.report_id">
-                <td class="text-center"><input type="checkbox" v-model="r.check" /></td>
-                <th class="text-center" scope="row">{{ r.num }}</th>
-                <td>{{ r.detector_name + '_' + r.function_type }}</td>
-                <td>{{ r.detector_name }}</td>
-                <td>{{ r.testing_datetime }}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="text-center">Select</th>
+                  <th scope="col" class="text-center">#</th>
+                  <th scope="col">Report</th>
+                  <th scope="col">Testing date time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="r in reports" :key="r.report_id">
+                  <td class="text-center"><input type="checkbox" v-model="r.check" /></td>
+                  <th class="text-center" scope="row">{{ r.num }}</th>
+                  <td>{{ r.detector_name + '_' + r.function_type }}</td>
+                  <td>{{ r.testing_datetime[0] + ' ' + r.testing_datetime[1] }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <!-- table end -->
 
           <div><CompareButton :reports="reports.filter((r) => r.check)" /></div>

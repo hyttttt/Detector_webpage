@@ -33,7 +33,7 @@ fetch('http://140.118.155.18:8000/api/detector', {
     response.forEach(function (d) {
       detectors.value.push({
         detector_id: d.detector_id,
-        detector_name: d.detector_name,
+        detector_name: d.detector_name.split('.')[0],
         file_id: d.file_id
       })
     })
@@ -68,8 +68,11 @@ fetch('http://140.118.155.18:8000/api/report', {
         total_sample_num: r.total_sample_num,
         user_id: r.user_id,
         user_name: r.user_name,
-        testing_datetime: r.testing_datetime,
-        detector_name: r.detector_name
+        testing_datetime: [
+          r.testing_datetime.split('T')[0],
+          r.testing_datetime.split('T')[1].split('Z')[0].split('.')[0]
+        ],
+        detector_name: r.detector_name.split('.')[0]
       })
     })
   })
@@ -136,6 +139,12 @@ fetch('http://140.118.155.18:8000/api/report', {
               </div>
             </div>
             <ul class="list-group" id="d-list">
+              <li class="list-group-item">
+                <div class="row text-muted">
+                  <div class="col-6">Detector name</div>
+                </div>
+              </li>
+
               <li v-if="loading">
                 <div class="d-flex justify-content-center">
                   <div class="spinner-border text-primary m-5" role="status">
@@ -145,16 +154,16 @@ fetch('http://140.118.155.18:8000/api/report', {
               </li>
               <li v-else v-for="d in detectors" :key="d.detector_id" class="list-group-item">
                 <div class="row">
-                  <div class="col">
+                  <div class="col-6">
                     <a>{{ d.detector_name }}</a>
                   </div>
-                  <div class="col-2 text-right">
+                  <div class="col text-right">
                     <TestButton :did="d.detector_id" />
                   </div>
                   <!-- <div class="col-2 text-right">
                     <UpdateButton :did="d.detector_id" />
                   </div> -->
-                  <div class="col-2 text-right">
+                  <div class="col text-right">
                     <DeleteButton_d :did="d.detector_id" />
                   </div>
                 </div>
@@ -174,6 +183,15 @@ fetch('http://140.118.155.18:8000/api/report', {
               </div>
             </div>
             <ul class="list-group" id="r-list">
+              <li class="list-group-item">
+                <div class="row text-muted">
+                  <div class="col-5">Report name</div>
+                  <div class="col">Date</div>
+                  <div class="col">Time</div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                </div>
+              </li>
               <li v-if="loading">
                 <div class="d-flex justify-content-center">
                   <div class="spinner-border text-primary m-5" role="status"></div>
@@ -181,12 +199,13 @@ fetch('http://140.118.155.18:8000/api/report', {
               </li>
               <li v-else v-for="r in reports" :key="r.report_id" class="list-group-item">
                 <div class="row">
-                  <div class="col">
+                  <div class="col-5">
                     <a>{{ r.detector_name + '_' + r.function_type }}</a>
                   </div>
-                  <div class="col">{{ r.testing_datetime }}</div>
-                  <div class="col-2 text-right"><ViewReportButton :rid="r.report_id" /></div>
-                  <div class="col-2 text-right"><DeleteButton_r :rid="r.report_id" /></div>
+                  <div class="col">{{ r.testing_datetime[0] }}</div>
+                  <div class="col">{{ r.testing_datetime[1] }}</div>
+                  <div class="col text-right"><ViewReportButton :rid="r.report_id" /></div>
+                  <div class="col text-right"><DeleteButton_r :rid="r.report_id" /></div>
                 </div>
               </li>
             </ul>
