@@ -55,8 +55,8 @@ fetch('http://140.118.155.18:8000/api/report', {
         report_id: r.report_id,
         function_type: r.function_type,
         accuracy: r.accuracy,
-        fp: r.fp,
-        fn: r.fn,
+        // fp: r.fp,
+        // fn: r.fn,
         precision: r.precision,
         recall: r.recall,
         f1: r.f1,
@@ -65,7 +65,11 @@ fetch('http://140.118.155.18:8000/api/report', {
         max_time: r.max_time,
         testing_time: r.testing_time,
         testing_sample_num: r.testing_sample_num,
-        total_sample_num: r.total_sample_num
+        total_sample_num: r.total_sample_num,
+        user_id: r.user_id,
+        user_name: r.user_name,
+        testing_datetime: r.testing_datetime,
+        detector_name: r.detector_name
       })
     })
   })
@@ -123,7 +127,7 @@ fetch('http://140.118.155.18:8000/api/report', {
 
       <div class="row">
         <!-- dectector list start -->
-        <div class="col">
+        <div class="col-4">
           <div class="card">
             <div class="card-header">
               <div class="row">
@@ -161,7 +165,7 @@ fetch('http://140.118.155.18:8000/api/report', {
         <!-- dectector list end -->
 
         <!-- report list start -->
-        <div class="col">
+        <div class="col-8">
           <div class="card">
             <div class="card-header">
               <div class="row">
@@ -178,8 +182,9 @@ fetch('http://140.118.155.18:8000/api/report', {
               <li v-else v-for="r in reports" :key="r.report_id" class="list-group-item">
                 <div class="row">
                   <div class="col">
-                    <a>Report {{ r.report_id }}</a>
+                    <a>{{ r.detector_name + '_' + r.function_type }}</a>
                   </div>
+                  <div class="col">{{ r.testing_datetime }}</div>
                   <div class="col-2 text-right"><ViewReportButton :rid="r.report_id" /></div>
                   <div class="col-2 text-right"><DeleteButton_r :rid="r.report_id" /></div>
                 </div>

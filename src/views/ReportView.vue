@@ -72,7 +72,7 @@ else {
             :recall="r.recall"
             :f1="r.f1"
           >
-            <template v-slot:title>{{ r.function_type }}</template>
+            <template v-slot:title>{{ r.detector_name + '_' + r.function_type }}</template>
             <template v-slot:test-sample-num>{{ r.testing_sample_num }}</template>
             <template v-slot:total-sample-num>{{ r.total_sample_num }}</template>
             <template v-slot:test-time-max>{{ r.max_time }}</template>

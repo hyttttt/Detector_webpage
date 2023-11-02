@@ -28,7 +28,9 @@ function refresh_leader(dataset) {
           uname: response[i].user_name,
           score: Number.isInteger(response[i].accuracy)
             ? response[i].accuracy
-            : response[i].accuracy.toFixed(6)
+            : response[i].accuracy.toFixed(6),
+          testing_datetime: response[i].testing_datetime,
+          detector_name: response[i].detector_name
         })
       }
     })
@@ -120,7 +122,7 @@ function select_sample(name) {
 
       <div class="row">
         <!-- Average ranking start -->
-        <div class="col">
+        <div class="col-8">
           <div class="card">
             <div class="card-header">
               <h5>Top 50</h5>
@@ -132,6 +134,8 @@ function select_sample(name) {
                   <div class="row text-muted">
                     <div class="col">Ranking</div>
                     <div class="col">User</div>
+                    <div class="col">Detector</div>
+                    <div class="col">Testing Date</div>
                     <div class="col">Score</div>
                   </div>
                 </li>
@@ -139,6 +143,8 @@ function select_sample(name) {
                   <div class="row">
                     <div class="col">{{ l.rank }}</div>
                     <div class="col">{{ l.uname }}</div>
+                    <div class="col">{{ l.detector_name }}</div>
+                    <div class="col">{{ l.testing_datetime }}</div>
                     <div class="col">{{ l.score }}</div>
                   </div>
                 </li>

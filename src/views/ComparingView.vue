@@ -34,7 +34,11 @@ fetch('http://140.118.155.18:8000/api/report', {
         max_time: r.max_time,
         testing_time: r.testing_time,
         testing_sample_num: r.testing_sample_num,
-        total_sample_num: r.total_sample_num
+        total_sample_num: r.total_sample_num,
+        user_id: r.user_id,
+        user_name: r.user_name,
+        testing_datetime: r.testing_datetime,
+        detector_name: r.detector_name
       })
     })
   })
@@ -53,18 +57,18 @@ fetch('http://140.118.155.18:8000/api/report', {
               <tr>
                 <th scope="col" class="text-center">Select</th>
                 <th scope="col" class="text-center">#</th>
-                <th scope="col">Report ID</th>
-                <!-- <th scope="col">Detector</th>
-                <th scope="col">Start time</th> -->
+                <th scope="col">Report</th>
+                <th scope="col">Detector</th>
+                <th scope="col">Testing date</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="r in reports" :key="r.report_id">
                 <td class="text-center"><input type="checkbox" v-model="r.check" /></td>
                 <th class="text-center" scope="row">{{ r.num }}</th>
-                <td>{{ r.report_id }}</td>
-                <!-- <td>detector</td>
-                <td>time</td> -->
+                <td>{{ r.detector_name + '_' + r.function_type }}</td>
+                <td>{{ r.detector_name }}</td>
+                <td>{{ r.testing_datetime }}</td>
               </tr>
             </tbody>
           </table>
